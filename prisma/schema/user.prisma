@@ -1,9 +1,13 @@
 model user {
-    id        String   @id @default(uuid())
-    name      String
-    email     String   @unique
-    phone     String   @unique
-    role      userRole @default(USER)
-    createdAt DateTime @default(now())
-    updateAt  DateTime @updatedAt
+    id           String   @id @default(uuid())
+    name         String
+    email        String   @unique
+    password     String
+    phone        String   @unique
+    profilePhoto String?
+    isActive     Boolean  @default(true)
+    isDeleted    Boolean  @default(false)
+    role         UserRole @default(USER)
+    createdAt    DateTime @default(now())
+    updateAt     DateTime @updatedAt
 }

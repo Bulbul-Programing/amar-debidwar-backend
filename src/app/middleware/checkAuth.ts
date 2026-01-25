@@ -29,8 +29,11 @@ export const validateUser = (...authRoles: string[]) => async (req: Request, res
         if (!isUserExist) {
             throw new AppError(httpStatus.BAD_REQUEST, "User does not exist")
         }
-        if (isUserExist.isBlocked) {
+        if (!isUserExist.isActive) {
             throw new AppError(httpStatus.BAD_REQUEST, "User is Blocked")
+        }
+        if (isUserExist.isDeleted) {
+            throw new AppError(httpStatus.BAD_REQUEST, "User Not found")
         }
 
         if (!authRoles.includes(verifiedToken.role)) {

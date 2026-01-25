@@ -1,0 +1,18 @@
+import express from 'express';
+import { userController } from './user.controller';;
+import { UserRole } from './user.interface';
+import { validateUser } from '../../middleware/checkAuth';
+import { validateRequest } from '../../middleware/validateRequest';
+import { userValidationSchema } from './user.validation';
+
+const router = express.Router()
+
+router.post('/', validateRequest(userValidationSchema.createUserSchema), userController.createUser)
+router.post('/createAdmin', validateUser(UserRole.ADMIN), validateRequest(userValidationSchema.createUserSchema), userController.createUser)
+router.get('/', validateUser(UserRole.ADMIN, UserRole.MP), userController.getAllUsers)
+router.get('/:id', userController.getSingleUser)
+router.patch('/:userId', userController.updateUser)
+router.delete('/:userId', validateUser(UserRole.ADMIN, UserRole.MP), userController.deleteUser)
+router.patch('/block/:userId', validateUser(UserRole.ADMIN, UserRole.MP), userController.blockedUser)
+
+export const userRoutes = router
