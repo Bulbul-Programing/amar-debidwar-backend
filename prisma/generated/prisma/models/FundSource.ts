@@ -28,18 +28,21 @@ export type FundSourceMinAggregateOutputType = {
   id: string | null
   name: string | null
   ministry: string | null
+  isDeleted: boolean | null
 }
 
 export type FundSourceMaxAggregateOutputType = {
   id: string | null
   name: string | null
   ministry: string | null
+  isDeleted: boolean | null
 }
 
 export type FundSourceCountAggregateOutputType = {
   id: number
   name: number
   ministry: number
+  isDeleted: number
   _all: number
 }
 
@@ -48,18 +51,21 @@ export type FundSourceMinAggregateInputType = {
   id?: true
   name?: true
   ministry?: true
+  isDeleted?: true
 }
 
 export type FundSourceMaxAggregateInputType = {
   id?: true
   name?: true
   ministry?: true
+  isDeleted?: true
 }
 
 export type FundSourceCountAggregateInputType = {
   id?: true
   name?: true
   ministry?: true
+  isDeleted?: true
   _all?: true
 }
 
@@ -139,6 +145,7 @@ export type FundSourceGroupByOutputType = {
   id: string
   name: string
   ministry: string
+  isDeleted: boolean
   _count: FundSourceCountAggregateOutputType | null
   _min: FundSourceMinAggregateOutputType | null
   _max: FundSourceMaxAggregateOutputType | null
@@ -166,6 +173,7 @@ export type FundSourceWhereInput = {
   id?: Prisma.StringFilter<"FundSource"> | string
   name?: Prisma.StringFilter<"FundSource"> | string
   ministry?: Prisma.StringFilter<"FundSource"> | string
+  isDeleted?: Prisma.BoolFilter<"FundSource"> | boolean
   budgets?: Prisma.BudgetListRelationFilter
 }
 
@@ -173,6 +181,7 @@ export type FundSourceOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   ministry?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   budgets?: Prisma.BudgetOrderByRelationAggregateInput
 }
 
@@ -183,6 +192,7 @@ export type FundSourceWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.FundSourceWhereInput | Prisma.FundSourceWhereInput[]
   name?: Prisma.StringFilter<"FundSource"> | string
   ministry?: Prisma.StringFilter<"FundSource"> | string
+  isDeleted?: Prisma.BoolFilter<"FundSource"> | boolean
   budgets?: Prisma.BudgetListRelationFilter
 }, "id">
 
@@ -190,6 +200,7 @@ export type FundSourceOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   ministry?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   _count?: Prisma.FundSourceCountOrderByAggregateInput
   _max?: Prisma.FundSourceMaxOrderByAggregateInput
   _min?: Prisma.FundSourceMinOrderByAggregateInput
@@ -202,12 +213,14 @@ export type FundSourceScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"FundSource"> | string
   name?: Prisma.StringWithAggregatesFilter<"FundSource"> | string
   ministry?: Prisma.StringWithAggregatesFilter<"FundSource"> | string
+  isDeleted?: Prisma.BoolWithAggregatesFilter<"FundSource"> | boolean
 }
 
 export type FundSourceCreateInput = {
   id?: string
   name: string
   ministry: string
+  isDeleted?: boolean
   budgets?: Prisma.BudgetCreateNestedManyWithoutFundSourceInput
 }
 
@@ -215,6 +228,7 @@ export type FundSourceUncheckedCreateInput = {
   id?: string
   name: string
   ministry: string
+  isDeleted?: boolean
   budgets?: Prisma.BudgetUncheckedCreateNestedManyWithoutFundSourceInput
 }
 
@@ -222,6 +236,7 @@ export type FundSourceUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   ministry?: Prisma.StringFieldUpdateOperationsInput | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   budgets?: Prisma.BudgetUpdateManyWithoutFundSourceNestedInput
 }
 
@@ -229,6 +244,7 @@ export type FundSourceUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   ministry?: Prisma.StringFieldUpdateOperationsInput | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   budgets?: Prisma.BudgetUncheckedUpdateManyWithoutFundSourceNestedInput
 }
 
@@ -236,18 +252,21 @@ export type FundSourceCreateManyInput = {
   id?: string
   name: string
   ministry: string
+  isDeleted?: boolean
 }
 
 export type FundSourceUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   ministry?: Prisma.StringFieldUpdateOperationsInput | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type FundSourceUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   ministry?: Prisma.StringFieldUpdateOperationsInput | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type FundSourceScalarRelationFilter = {
@@ -259,18 +278,21 @@ export type FundSourceCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   ministry?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
 }
 
 export type FundSourceMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   ministry?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
 }
 
 export type FundSourceMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   ministry?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
 }
 
 export type FundSourceCreateNestedOneWithoutBudgetsInput = {
@@ -291,12 +313,14 @@ export type FundSourceCreateWithoutBudgetsInput = {
   id?: string
   name: string
   ministry: string
+  isDeleted?: boolean
 }
 
 export type FundSourceUncheckedCreateWithoutBudgetsInput = {
   id?: string
   name: string
   ministry: string
+  isDeleted?: boolean
 }
 
 export type FundSourceCreateOrConnectWithoutBudgetsInput = {
@@ -319,12 +343,14 @@ export type FundSourceUpdateWithoutBudgetsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   ministry?: Prisma.StringFieldUpdateOperationsInput | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type FundSourceUncheckedUpdateWithoutBudgetsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   ministry?: Prisma.StringFieldUpdateOperationsInput | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -362,6 +388,7 @@ export type FundSourceSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   id?: boolean
   name?: boolean
   ministry?: boolean
+  isDeleted?: boolean
   budgets?: boolean | Prisma.FundSource$budgetsArgs<ExtArgs>
   _count?: boolean | Prisma.FundSourceCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["fundSource"]>
@@ -370,21 +397,24 @@ export type FundSourceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   id?: boolean
   name?: boolean
   ministry?: boolean
+  isDeleted?: boolean
 }, ExtArgs["result"]["fundSource"]>
 
 export type FundSourceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   ministry?: boolean
+  isDeleted?: boolean
 }, ExtArgs["result"]["fundSource"]>
 
 export type FundSourceSelectScalar = {
   id?: boolean
   name?: boolean
   ministry?: boolean
+  isDeleted?: boolean
 }
 
-export type FundSourceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "ministry", ExtArgs["result"]["fundSource"]>
+export type FundSourceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "ministry" | "isDeleted", ExtArgs["result"]["fundSource"]>
 export type FundSourceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   budgets?: boolean | Prisma.FundSource$budgetsArgs<ExtArgs>
   _count?: boolean | Prisma.FundSourceCountOutputTypeDefaultArgs<ExtArgs>
@@ -401,6 +431,7 @@ export type $FundSourcePayload<ExtArgs extends runtime.Types.Extensions.Internal
     id: string
     name: string
     ministry: string
+    isDeleted: boolean
   }, ExtArgs["result"]["fundSource"]>
   composites: {}
 }
@@ -828,6 +859,7 @@ export interface FundSourceFieldRefs {
   readonly id: Prisma.FieldRef<"FundSource", 'String'>
   readonly name: Prisma.FieldRef<"FundSource", 'String'>
   readonly ministry: Prisma.FieldRef<"FundSource", 'String'>
+  readonly isDeleted: Prisma.FieldRef<"FundSource", 'Boolean'>
 }
     
 

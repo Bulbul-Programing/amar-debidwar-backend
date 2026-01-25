@@ -1,6 +1,7 @@
 model FundSource {
-    id       String   @id @default(uuid())
-    name     String
-    ministry String
-    budgets  Budget[]
+    id        String   @id @default(uuid())
+    name      String
+    ministry  String
+    isDeleted Boolean  @default(false)
+    budgets   Budget[]
 }

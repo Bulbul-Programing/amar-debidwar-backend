@@ -1478,7 +1478,8 @@ export type DonationScalarFieldEnum = (typeof DonationScalarFieldEnum)[keyof typ
 export const FundSourceScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  ministry: 'ministry'
+  ministry: 'ministry',
+  isDeleted: 'isDeleted'
 } as const
 
 export type FundSourceScalarFieldEnum = (typeof FundSourceScalarFieldEnum)[keyof typeof FundSourceScalarFieldEnum]
