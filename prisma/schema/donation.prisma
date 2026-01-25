@@ -1,0 +1,6 @@
+model Donation {
+    id    String @id @default(uuid())
+    title String
+
+    recipients ServiceRecipient[]
+}

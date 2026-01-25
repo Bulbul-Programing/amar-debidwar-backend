@@ -1,0 +1,18 @@
+model ServiceRecipient {
+    id        String @id @default(uuid())
+    name      String
+    phone     String
+    nidNumber String @unique
+    address   String
+
+    unionId String
+    union   Union  @relation(fields: [unionId], references: [id])
+
+    villageId String
+    village   Village @relation(fields: [villageId], references: [id])
+
+    donationId String
+    donation   Donation @relation(fields: [donationId], references: [id])
+
+    createdAt DateTime @default(now())
+}

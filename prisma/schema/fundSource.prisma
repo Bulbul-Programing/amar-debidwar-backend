@@ -1,0 +1,6 @@
+model FundSource {
+    id       String   @id @default(uuid())
+    name     String
+    ministry String
+    budgets  Budget[]
+}

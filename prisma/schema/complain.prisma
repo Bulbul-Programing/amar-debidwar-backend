@@ -1,0 +1,25 @@
+model Complaint {
+    id               String   @id @default(uuid())
+    title            String
+    description      String
+    photo            String?
+    location         String
+    
+    complainCategory String
+    category         ComplaintCategory @relation(fields: [complainCategory], references: [id])
+    
+    createdAt        DateTime          @default(now())
+    updateAt         DateTime          @updatedAt
+}
+
+model ComplaintCategory {
+    id       String  @id @default(uuid())
+    name     String
+    nameBn   String?
+    isActive Boolean @default(true)
+
+    complaints Complaint[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}

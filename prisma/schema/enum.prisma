@@ -1,0 +1,13 @@
+enum userRole {
+    MP
+    ADMIN
+    USER
+}
+
+// enum ComplaintCategory {
+//     ROAD
+//     EDUCATION
+//     HEALTH
+//     WATER
+//     OTHER
+// }

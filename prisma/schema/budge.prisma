@@ -1,0 +1,13 @@
+model Budget {
+    id           String   @id @default(uuid())
+    title        String
+    description  String
+    budgetAmount Float
+    fiscalYear   String
+    receiveDate  DateTime
+
+    fundSourceId String
+    fundSource   FundSource @relation(fields: [fundSourceId], references: [id])
+
+    projects Project[]
+}
