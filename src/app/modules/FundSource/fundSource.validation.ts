@@ -13,3 +13,19 @@ export const fundSourceCreateValidation = z.object({
         .min(2, "Name must be at least 2 characters long")
         .max(100, "Name cannot exceed 100 characters"),
 });
+
+export const fundSourceUpdateValidation = z.object({
+    name: z
+        .string()
+        .trim()
+        .min(2, "Name must be at least 2 characters long")
+        .max(100, "Name cannot exceed 100 characters")
+        .optional(),
+
+    ministry: z
+        .string()
+        .trim()
+        .min(2, "Name must be at least 2 characters long")
+        .max(100, "Name cannot exceed 100 characters")
+        .optional(),
+});

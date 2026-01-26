@@ -5,9 +5,12 @@ model Budget {
     budgetAmount Float
     fiscalYear   String
     receiveDate  DateTime
+    isDeleted    Boolean  @default(false)
 
     fundSourceId String
     fundSource   FundSource @relation(fields: [fundSourceId], references: [id])
 
-    projects Project[]
+    projects  Project[]
+    createdAt DateTime  @default(now())
+    updateAt  DateTime  @updatedAt
 }

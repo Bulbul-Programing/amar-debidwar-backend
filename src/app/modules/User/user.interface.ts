@@ -10,6 +10,7 @@ export type TUser = {
     id: string;
     name: string;
     email: string;
+    profilePhoto?: string | null;
     password: string;
     phone: string;
     role: UserRole;
@@ -19,8 +20,9 @@ export type TUser = {
 
 export type TUpdateUser = {
     name?: string;
-    phoneNumber?: string;
+    phone?: string;
     profilePhoto?: string | null;
+    password?: string;
     oldPassword?: string;
     newPassword?: string;
     confirmPassword?: string;

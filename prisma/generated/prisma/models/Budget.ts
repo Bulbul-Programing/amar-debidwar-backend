@@ -41,7 +41,10 @@ export type BudgetMinAggregateOutputType = {
   budgetAmount: number | null
   fiscalYear: string | null
   receiveDate: Date | null
+  isDeleted: boolean | null
   fundSourceId: string | null
+  createdAt: Date | null
+  updateAt: Date | null
 }
 
 export type BudgetMaxAggregateOutputType = {
@@ -51,7 +54,10 @@ export type BudgetMaxAggregateOutputType = {
   budgetAmount: number | null
   fiscalYear: string | null
   receiveDate: Date | null
+  isDeleted: boolean | null
   fundSourceId: string | null
+  createdAt: Date | null
+  updateAt: Date | null
 }
 
 export type BudgetCountAggregateOutputType = {
@@ -61,7 +67,10 @@ export type BudgetCountAggregateOutputType = {
   budgetAmount: number
   fiscalYear: number
   receiveDate: number
+  isDeleted: number
   fundSourceId: number
+  createdAt: number
+  updateAt: number
   _all: number
 }
 
@@ -81,7 +90,10 @@ export type BudgetMinAggregateInputType = {
   budgetAmount?: true
   fiscalYear?: true
   receiveDate?: true
+  isDeleted?: true
   fundSourceId?: true
+  createdAt?: true
+  updateAt?: true
 }
 
 export type BudgetMaxAggregateInputType = {
@@ -91,7 +103,10 @@ export type BudgetMaxAggregateInputType = {
   budgetAmount?: true
   fiscalYear?: true
   receiveDate?: true
+  isDeleted?: true
   fundSourceId?: true
+  createdAt?: true
+  updateAt?: true
 }
 
 export type BudgetCountAggregateInputType = {
@@ -101,7 +116,10 @@ export type BudgetCountAggregateInputType = {
   budgetAmount?: true
   fiscalYear?: true
   receiveDate?: true
+  isDeleted?: true
   fundSourceId?: true
+  createdAt?: true
+  updateAt?: true
   _all?: true
 }
 
@@ -198,7 +216,10 @@ export type BudgetGroupByOutputType = {
   budgetAmount: number
   fiscalYear: string
   receiveDate: Date
+  isDeleted: boolean
   fundSourceId: string
+  createdAt: Date
+  updateAt: Date
   _count: BudgetCountAggregateOutputType | null
   _avg: BudgetAvgAggregateOutputType | null
   _sum: BudgetSumAggregateOutputType | null
@@ -231,7 +252,10 @@ export type BudgetWhereInput = {
   budgetAmount?: Prisma.FloatFilter<"Budget"> | number
   fiscalYear?: Prisma.StringFilter<"Budget"> | string
   receiveDate?: Prisma.DateTimeFilter<"Budget"> | Date | string
+  isDeleted?: Prisma.BoolFilter<"Budget"> | boolean
   fundSourceId?: Prisma.StringFilter<"Budget"> | string
+  createdAt?: Prisma.DateTimeFilter<"Budget"> | Date | string
+  updateAt?: Prisma.DateTimeFilter<"Budget"> | Date | string
   fundSource?: Prisma.XOR<Prisma.FundSourceScalarRelationFilter, Prisma.FundSourceWhereInput>
   projects?: Prisma.ProjectListRelationFilter
 }
@@ -243,7 +267,10 @@ export type BudgetOrderByWithRelationInput = {
   budgetAmount?: Prisma.SortOrder
   fiscalYear?: Prisma.SortOrder
   receiveDate?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   fundSourceId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
   fundSource?: Prisma.FundSourceOrderByWithRelationInput
   projects?: Prisma.ProjectOrderByRelationAggregateInput
 }
@@ -258,7 +285,10 @@ export type BudgetWhereUniqueInput = Prisma.AtLeast<{
   budgetAmount?: Prisma.FloatFilter<"Budget"> | number
   fiscalYear?: Prisma.StringFilter<"Budget"> | string
   receiveDate?: Prisma.DateTimeFilter<"Budget"> | Date | string
+  isDeleted?: Prisma.BoolFilter<"Budget"> | boolean
   fundSourceId?: Prisma.StringFilter<"Budget"> | string
+  createdAt?: Prisma.DateTimeFilter<"Budget"> | Date | string
+  updateAt?: Prisma.DateTimeFilter<"Budget"> | Date | string
   fundSource?: Prisma.XOR<Prisma.FundSourceScalarRelationFilter, Prisma.FundSourceWhereInput>
   projects?: Prisma.ProjectListRelationFilter
 }, "id">
@@ -270,7 +300,10 @@ export type BudgetOrderByWithAggregationInput = {
   budgetAmount?: Prisma.SortOrder
   fiscalYear?: Prisma.SortOrder
   receiveDate?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   fundSourceId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
   _count?: Prisma.BudgetCountOrderByAggregateInput
   _avg?: Prisma.BudgetAvgOrderByAggregateInput
   _max?: Prisma.BudgetMaxOrderByAggregateInput
@@ -288,7 +321,10 @@ export type BudgetScalarWhereWithAggregatesInput = {
   budgetAmount?: Prisma.FloatWithAggregatesFilter<"Budget"> | number
   fiscalYear?: Prisma.StringWithAggregatesFilter<"Budget"> | string
   receiveDate?: Prisma.DateTimeWithAggregatesFilter<"Budget"> | Date | string
+  isDeleted?: Prisma.BoolWithAggregatesFilter<"Budget"> | boolean
   fundSourceId?: Prisma.StringWithAggregatesFilter<"Budget"> | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Budget"> | Date | string
+  updateAt?: Prisma.DateTimeWithAggregatesFilter<"Budget"> | Date | string
 }
 
 export type BudgetCreateInput = {
@@ -298,6 +334,9 @@ export type BudgetCreateInput = {
   budgetAmount: number
   fiscalYear: string
   receiveDate: Date | string
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updateAt?: Date | string
   fundSource: Prisma.FundSourceCreateNestedOneWithoutBudgetsInput
   projects?: Prisma.ProjectCreateNestedManyWithoutBudgetInput
 }
@@ -309,7 +348,10 @@ export type BudgetUncheckedCreateInput = {
   budgetAmount: number
   fiscalYear: string
   receiveDate: Date | string
+  isDeleted?: boolean
   fundSourceId: string
+  createdAt?: Date | string
+  updateAt?: Date | string
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutBudgetInput
 }
 
@@ -320,6 +362,9 @@ export type BudgetUpdateInput = {
   budgetAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   fiscalYear?: Prisma.StringFieldUpdateOperationsInput | string
   receiveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fundSource?: Prisma.FundSourceUpdateOneRequiredWithoutBudgetsNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutBudgetNestedInput
 }
@@ -331,7 +376,10 @@ export type BudgetUncheckedUpdateInput = {
   budgetAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   fiscalYear?: Prisma.StringFieldUpdateOperationsInput | string
   receiveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   fundSourceId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutBudgetNestedInput
 }
 
@@ -342,7 +390,10 @@ export type BudgetCreateManyInput = {
   budgetAmount: number
   fiscalYear: string
   receiveDate: Date | string
+  isDeleted?: boolean
   fundSourceId: string
+  createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type BudgetUpdateManyMutationInput = {
@@ -352,6 +403,9 @@ export type BudgetUpdateManyMutationInput = {
   budgetAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   fiscalYear?: Prisma.StringFieldUpdateOperationsInput | string
   receiveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BudgetUncheckedUpdateManyInput = {
@@ -361,7 +415,10 @@ export type BudgetUncheckedUpdateManyInput = {
   budgetAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   fiscalYear?: Prisma.StringFieldUpdateOperationsInput | string
   receiveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   fundSourceId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BudgetCountOrderByAggregateInput = {
@@ -371,7 +428,10 @@ export type BudgetCountOrderByAggregateInput = {
   budgetAmount?: Prisma.SortOrder
   fiscalYear?: Prisma.SortOrder
   receiveDate?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   fundSourceId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
 }
 
 export type BudgetAvgOrderByAggregateInput = {
@@ -385,7 +445,10 @@ export type BudgetMaxOrderByAggregateInput = {
   budgetAmount?: Prisma.SortOrder
   fiscalYear?: Prisma.SortOrder
   receiveDate?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   fundSourceId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
 }
 
 export type BudgetMinOrderByAggregateInput = {
@@ -395,7 +458,10 @@ export type BudgetMinOrderByAggregateInput = {
   budgetAmount?: Prisma.SortOrder
   fiscalYear?: Prisma.SortOrder
   receiveDate?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   fundSourceId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
 }
 
 export type BudgetSumOrderByAggregateInput = {
@@ -427,6 +493,10 @@ export type FloatFieldUpdateOperationsInput = {
 
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 export type BudgetCreateNestedManyWithoutFundSourceInput = {
@@ -492,6 +562,9 @@ export type BudgetCreateWithoutFundSourceInput = {
   budgetAmount: number
   fiscalYear: string
   receiveDate: Date | string
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updateAt?: Date | string
   projects?: Prisma.ProjectCreateNestedManyWithoutBudgetInput
 }
 
@@ -502,6 +575,9 @@ export type BudgetUncheckedCreateWithoutFundSourceInput = {
   budgetAmount: number
   fiscalYear: string
   receiveDate: Date | string
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updateAt?: Date | string
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutBudgetInput
 }
 
@@ -541,7 +617,10 @@ export type BudgetScalarWhereInput = {
   budgetAmount?: Prisma.FloatFilter<"Budget"> | number
   fiscalYear?: Prisma.StringFilter<"Budget"> | string
   receiveDate?: Prisma.DateTimeFilter<"Budget"> | Date | string
+  isDeleted?: Prisma.BoolFilter<"Budget"> | boolean
   fundSourceId?: Prisma.StringFilter<"Budget"> | string
+  createdAt?: Prisma.DateTimeFilter<"Budget"> | Date | string
+  updateAt?: Prisma.DateTimeFilter<"Budget"> | Date | string
 }
 
 export type BudgetCreateWithoutProjectsInput = {
@@ -551,6 +630,9 @@ export type BudgetCreateWithoutProjectsInput = {
   budgetAmount: number
   fiscalYear: string
   receiveDate: Date | string
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updateAt?: Date | string
   fundSource: Prisma.FundSourceCreateNestedOneWithoutBudgetsInput
 }
 
@@ -561,7 +643,10 @@ export type BudgetUncheckedCreateWithoutProjectsInput = {
   budgetAmount: number
   fiscalYear: string
   receiveDate: Date | string
+  isDeleted?: boolean
   fundSourceId: string
+  createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type BudgetCreateOrConnectWithoutProjectsInput = {
@@ -587,6 +672,9 @@ export type BudgetUpdateWithoutProjectsInput = {
   budgetAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   fiscalYear?: Prisma.StringFieldUpdateOperationsInput | string
   receiveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fundSource?: Prisma.FundSourceUpdateOneRequiredWithoutBudgetsNestedInput
 }
 
@@ -597,7 +685,10 @@ export type BudgetUncheckedUpdateWithoutProjectsInput = {
   budgetAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   fiscalYear?: Prisma.StringFieldUpdateOperationsInput | string
   receiveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   fundSourceId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BudgetCreateManyFundSourceInput = {
@@ -607,6 +698,9 @@ export type BudgetCreateManyFundSourceInput = {
   budgetAmount: number
   fiscalYear: string
   receiveDate: Date | string
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type BudgetUpdateWithoutFundSourceInput = {
@@ -616,6 +710,9 @@ export type BudgetUpdateWithoutFundSourceInput = {
   budgetAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   fiscalYear?: Prisma.StringFieldUpdateOperationsInput | string
   receiveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   projects?: Prisma.ProjectUpdateManyWithoutBudgetNestedInput
 }
 
@@ -626,6 +723,9 @@ export type BudgetUncheckedUpdateWithoutFundSourceInput = {
   budgetAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   fiscalYear?: Prisma.StringFieldUpdateOperationsInput | string
   receiveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutBudgetNestedInput
 }
 
@@ -636,6 +736,9 @@ export type BudgetUncheckedUpdateManyWithoutFundSourceInput = {
   budgetAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   fiscalYear?: Prisma.StringFieldUpdateOperationsInput | string
   receiveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -676,7 +779,10 @@ export type BudgetSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   budgetAmount?: boolean
   fiscalYear?: boolean
   receiveDate?: boolean
+  isDeleted?: boolean
   fundSourceId?: boolean
+  createdAt?: boolean
+  updateAt?: boolean
   fundSource?: boolean | Prisma.FundSourceDefaultArgs<ExtArgs>
   projects?: boolean | Prisma.Budget$projectsArgs<ExtArgs>
   _count?: boolean | Prisma.BudgetCountOutputTypeDefaultArgs<ExtArgs>
@@ -689,7 +795,10 @@ export type BudgetSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   budgetAmount?: boolean
   fiscalYear?: boolean
   receiveDate?: boolean
+  isDeleted?: boolean
   fundSourceId?: boolean
+  createdAt?: boolean
+  updateAt?: boolean
   fundSource?: boolean | Prisma.FundSourceDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["budget"]>
 
@@ -700,7 +809,10 @@ export type BudgetSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   budgetAmount?: boolean
   fiscalYear?: boolean
   receiveDate?: boolean
+  isDeleted?: boolean
   fundSourceId?: boolean
+  createdAt?: boolean
+  updateAt?: boolean
   fundSource?: boolean | Prisma.FundSourceDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["budget"]>
 
@@ -711,10 +823,13 @@ export type BudgetSelectScalar = {
   budgetAmount?: boolean
   fiscalYear?: boolean
   receiveDate?: boolean
+  isDeleted?: boolean
   fundSourceId?: boolean
+  createdAt?: boolean
+  updateAt?: boolean
 }
 
-export type BudgetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "budgetAmount" | "fiscalYear" | "receiveDate" | "fundSourceId", ExtArgs["result"]["budget"]>
+export type BudgetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "budgetAmount" | "fiscalYear" | "receiveDate" | "isDeleted" | "fundSourceId" | "createdAt" | "updateAt", ExtArgs["result"]["budget"]>
 export type BudgetInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   fundSource?: boolean | Prisma.FundSourceDefaultArgs<ExtArgs>
   projects?: boolean | Prisma.Budget$projectsArgs<ExtArgs>
@@ -740,7 +855,10 @@ export type $BudgetPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     budgetAmount: number
     fiscalYear: string
     receiveDate: Date
+    isDeleted: boolean
     fundSourceId: string
+    createdAt: Date
+    updateAt: Date
   }, ExtArgs["result"]["budget"]>
   composites: {}
 }
@@ -1172,7 +1290,10 @@ export interface BudgetFieldRefs {
   readonly budgetAmount: Prisma.FieldRef<"Budget", 'Float'>
   readonly fiscalYear: Prisma.FieldRef<"Budget", 'String'>
   readonly receiveDate: Prisma.FieldRef<"Budget", 'DateTime'>
+  readonly isDeleted: Prisma.FieldRef<"Budget", 'Boolean'>
   readonly fundSourceId: Prisma.FieldRef<"Budget", 'String'>
+  readonly createdAt: Prisma.FieldRef<"Budget", 'DateTime'>
+  readonly updateAt: Prisma.FieldRef<"Budget", 'DateTime'>
 }
     
 

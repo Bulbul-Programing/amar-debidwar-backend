@@ -1435,7 +1435,10 @@ export const BudgetScalarFieldEnum = {
   budgetAmount: 'budgetAmount',
   fiscalYear: 'fiscalYear',
   receiveDate: 'receiveDate',
-  fundSourceId: 'fundSourceId'
+  isDeleted: 'isDeleted',
+  fundSourceId: 'fundSourceId',
+  createdAt: 'createdAt',
+  updateAt: 'updateAt'
 } as const
 
 export type BudgetScalarFieldEnum = (typeof BudgetScalarFieldEnum)[keyof typeof BudgetScalarFieldEnum]

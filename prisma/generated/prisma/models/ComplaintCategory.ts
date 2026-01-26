@@ -353,10 +353,6 @@ export type ComplaintCategoryUpdateOneRequiredWithoutComplaintsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ComplaintCategoryUpdateToOneWithWhereWithoutComplaintsInput, Prisma.ComplaintCategoryUpdateWithoutComplaintsInput>, Prisma.ComplaintCategoryUncheckedUpdateWithoutComplaintsInput>
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
 export type ComplaintCategoryCreateWithoutComplaintsInput = {
   id?: string
   name: string

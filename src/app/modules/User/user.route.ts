@@ -8,11 +8,11 @@ import { userValidationSchema } from './user.validation';
 const router = express.Router()
 
 router.post('/', validateRequest(userValidationSchema.createUserSchema), userController.createUser)
-router.post('/createAdmin', validateUser(UserRole.ADMIN), validateRequest(userValidationSchema.createUserSchema), userController.createUser)
+router.post('/createAdmin', validateUser(UserRole.MP), validateRequest(userValidationSchema.createUserSchema), userController.createAdmin)
 router.get('/', validateUser(UserRole.ADMIN, UserRole.MP), userController.getAllUsers)
 router.get('/:id', userController.getSingleUser)
-router.patch('/:userId', userController.updateUser)
-router.delete('/:userId', validateUser(UserRole.ADMIN, UserRole.MP), userController.deleteUser)
-router.patch('/block/:userId', validateUser(UserRole.ADMIN, UserRole.MP), userController.blockedUser)
+router.patch('/:userId', validateRequest(userValidationSchema.updateUserSchema), userController.updateUser)
+router.delete('/:userId', validateUser(UserRole.MP), userController.deleteUser)
+router.patch('/block/:userId', validateUser(UserRole.MP), userController.blockedUser)
 
 export const userRoutes = router

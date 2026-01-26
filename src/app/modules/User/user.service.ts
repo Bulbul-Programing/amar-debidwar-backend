@@ -3,7 +3,7 @@ import { envVars } from "../../envConfig";
 import AppError from "../../error/AppError";
 import { generateSlug } from "../../utils/generateSlug";
 import bcrypt from 'bcryptjs';
-import { TUpdateUser, TUser } from "./user.interface";
+import { TUpdateUser, TUser, UserRole } from "./user.interface";
 
 const createUser = async (payload: TUser) => {
     const isExistUser = await prisma.user.findUnique({
@@ -37,6 +37,7 @@ const crateAdmin = async (payload: TUser) => {
 
     const hashPassword = await bcrypt.hash(payload.password, Number(envVars.BCRYPT_ROUNDS))
     payload.password = hashPassword
+    payload.role = UserRole.ADMIN
 
     const createUser = await prisma.user.create(
         {
@@ -105,20 +106,19 @@ const updateUser = async (
             throw new AppError(400, "Nwe  passwords do not match");
         }
 
-        hashedPassword = await bcrypt.hash(
+        payload.password = await bcrypt.hash(
             payload.newPassword,
             Number(envVars.BCRYPT_ROUNDS)
         );
-    }
 
-    const updatePayload = {
-        ...payload,
-        password: hashedPassword ? hashedPassword : user.password
+        delete payload.newPassword
+        delete payload.oldPassword
+        delete payload.confirmPassword
     }
 
     const updateUser = await prisma.user.update({
         where: { id: userId },
-        data: updatePayload
+        data: payload
     })
 
     return updateUser

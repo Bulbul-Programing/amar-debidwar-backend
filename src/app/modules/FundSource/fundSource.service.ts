@@ -65,7 +65,7 @@ const deleteFundSource = async (id: string) => {
         }
     });
 
-    return softDeleteFundSource
+    return null
 };
 
 export const fundSourceService = {
