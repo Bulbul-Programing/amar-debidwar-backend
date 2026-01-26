@@ -1495,6 +1495,7 @@ export const ProjectScalarFieldEnum = {
   location: 'location',
   estimatedCost: 'estimatedCost',
   actualCost: 'actualCost',
+  isDeleted: 'isDeleted',
   budgetId: 'budgetId'
 } as const
 

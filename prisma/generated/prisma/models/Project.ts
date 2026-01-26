@@ -43,6 +43,7 @@ export type ProjectMinAggregateOutputType = {
   location: string | null
   estimatedCost: number | null
   actualCost: number | null
+  isDeleted: boolean | null
   budgetId: string | null
 }
 
@@ -53,6 +54,7 @@ export type ProjectMaxAggregateOutputType = {
   location: string | null
   estimatedCost: number | null
   actualCost: number | null
+  isDeleted: boolean | null
   budgetId: string | null
 }
 
@@ -63,6 +65,7 @@ export type ProjectCountAggregateOutputType = {
   location: number
   estimatedCost: number
   actualCost: number
+  isDeleted: number
   budgetId: number
   _all: number
 }
@@ -85,6 +88,7 @@ export type ProjectMinAggregateInputType = {
   location?: true
   estimatedCost?: true
   actualCost?: true
+  isDeleted?: true
   budgetId?: true
 }
 
@@ -95,6 +99,7 @@ export type ProjectMaxAggregateInputType = {
   location?: true
   estimatedCost?: true
   actualCost?: true
+  isDeleted?: true
   budgetId?: true
 }
 
@@ -105,6 +110,7 @@ export type ProjectCountAggregateInputType = {
   location?: true
   estimatedCost?: true
   actualCost?: true
+  isDeleted?: true
   budgetId?: true
   _all?: true
 }
@@ -202,6 +208,7 @@ export type ProjectGroupByOutputType = {
   location: string
   estimatedCost: number
   actualCost: number | null
+  isDeleted: boolean
   budgetId: string
   _count: ProjectCountAggregateOutputType | null
   _avg: ProjectAvgAggregateOutputType | null
@@ -235,6 +242,7 @@ export type ProjectWhereInput = {
   location?: Prisma.StringFilter<"Project"> | string
   estimatedCost?: Prisma.FloatFilter<"Project"> | number
   actualCost?: Prisma.FloatNullableFilter<"Project"> | number | null
+  isDeleted?: Prisma.BoolFilter<"Project"> | boolean
   budgetId?: Prisma.StringFilter<"Project"> | string
   budget?: Prisma.XOR<Prisma.BudgetScalarRelationFilter, Prisma.BudgetWhereInput>
   expenses?: Prisma.ExpenseListRelationFilter
@@ -247,6 +255,7 @@ export type ProjectOrderByWithRelationInput = {
   location?: Prisma.SortOrder
   estimatedCost?: Prisma.SortOrder
   actualCost?: Prisma.SortOrderInput | Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   budgetId?: Prisma.SortOrder
   budget?: Prisma.BudgetOrderByWithRelationInput
   expenses?: Prisma.ExpenseOrderByRelationAggregateInput
@@ -262,6 +271,7 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   location?: Prisma.StringFilter<"Project"> | string
   estimatedCost?: Prisma.FloatFilter<"Project"> | number
   actualCost?: Prisma.FloatNullableFilter<"Project"> | number | null
+  isDeleted?: Prisma.BoolFilter<"Project"> | boolean
   budgetId?: Prisma.StringFilter<"Project"> | string
   budget?: Prisma.XOR<Prisma.BudgetScalarRelationFilter, Prisma.BudgetWhereInput>
   expenses?: Prisma.ExpenseListRelationFilter
@@ -274,6 +284,7 @@ export type ProjectOrderByWithAggregationInput = {
   location?: Prisma.SortOrder
   estimatedCost?: Prisma.SortOrder
   actualCost?: Prisma.SortOrderInput | Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   budgetId?: Prisma.SortOrder
   _count?: Prisma.ProjectCountOrderByAggregateInput
   _avg?: Prisma.ProjectAvgOrderByAggregateInput
@@ -292,6 +303,7 @@ export type ProjectScalarWhereWithAggregatesInput = {
   location?: Prisma.StringWithAggregatesFilter<"Project"> | string
   estimatedCost?: Prisma.FloatWithAggregatesFilter<"Project"> | number
   actualCost?: Prisma.FloatNullableWithAggregatesFilter<"Project"> | number | null
+  isDeleted?: Prisma.BoolWithAggregatesFilter<"Project"> | boolean
   budgetId?: Prisma.StringWithAggregatesFilter<"Project"> | string
 }
 
@@ -302,6 +314,7 @@ export type ProjectCreateInput = {
   location: string
   estimatedCost: number
   actualCost?: number | null
+  isDeleted?: boolean
   budget: Prisma.BudgetCreateNestedOneWithoutProjectsInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutProjectInput
 }
@@ -313,6 +326,7 @@ export type ProjectUncheckedCreateInput = {
   location: string
   estimatedCost: number
   actualCost?: number | null
+  isDeleted?: boolean
   budgetId: string
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutProjectInput
 }
@@ -324,6 +338,7 @@ export type ProjectUpdateInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.FloatFieldUpdateOperationsInput | number
   actualCost?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   budget?: Prisma.BudgetUpdateOneRequiredWithoutProjectsNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutProjectNestedInput
 }
@@ -335,6 +350,7 @@ export type ProjectUncheckedUpdateInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.FloatFieldUpdateOperationsInput | number
   actualCost?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   budgetId?: Prisma.StringFieldUpdateOperationsInput | string
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutProjectNestedInput
 }
@@ -346,6 +362,7 @@ export type ProjectCreateManyInput = {
   location: string
   estimatedCost: number
   actualCost?: number | null
+  isDeleted?: boolean
   budgetId: string
 }
 
@@ -356,6 +373,7 @@ export type ProjectUpdateManyMutationInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.FloatFieldUpdateOperationsInput | number
   actualCost?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ProjectUncheckedUpdateManyInput = {
@@ -365,6 +383,7 @@ export type ProjectUncheckedUpdateManyInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.FloatFieldUpdateOperationsInput | number
   actualCost?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   budgetId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -385,6 +404,7 @@ export type ProjectCountOrderByAggregateInput = {
   location?: Prisma.SortOrder
   estimatedCost?: Prisma.SortOrder
   actualCost?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   budgetId?: Prisma.SortOrder
 }
 
@@ -400,6 +420,7 @@ export type ProjectMaxOrderByAggregateInput = {
   location?: Prisma.SortOrder
   estimatedCost?: Prisma.SortOrder
   actualCost?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   budgetId?: Prisma.SortOrder
 }
 
@@ -410,6 +431,7 @@ export type ProjectMinOrderByAggregateInput = {
   location?: Prisma.SortOrder
   estimatedCost?: Prisma.SortOrder
   actualCost?: Prisma.SortOrder
+  isDeleted?: Prisma.SortOrder
   budgetId?: Prisma.SortOrder
 }
 
@@ -494,6 +516,7 @@ export type ProjectCreateWithoutBudgetInput = {
   location: string
   estimatedCost: number
   actualCost?: number | null
+  isDeleted?: boolean
   expenses?: Prisma.ExpenseCreateNestedManyWithoutProjectInput
 }
 
@@ -504,6 +527,7 @@ export type ProjectUncheckedCreateWithoutBudgetInput = {
   location: string
   estimatedCost: number
   actualCost?: number | null
+  isDeleted?: boolean
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutProjectInput
 }
 
@@ -543,6 +567,7 @@ export type ProjectScalarWhereInput = {
   location?: Prisma.StringFilter<"Project"> | string
   estimatedCost?: Prisma.FloatFilter<"Project"> | number
   actualCost?: Prisma.FloatNullableFilter<"Project"> | number | null
+  isDeleted?: Prisma.BoolFilter<"Project"> | boolean
   budgetId?: Prisma.StringFilter<"Project"> | string
 }
 
@@ -553,6 +578,7 @@ export type ProjectCreateWithoutExpensesInput = {
   location: string
   estimatedCost: number
   actualCost?: number | null
+  isDeleted?: boolean
   budget: Prisma.BudgetCreateNestedOneWithoutProjectsInput
 }
 
@@ -563,6 +589,7 @@ export type ProjectUncheckedCreateWithoutExpensesInput = {
   location: string
   estimatedCost: number
   actualCost?: number | null
+  isDeleted?: boolean
   budgetId: string
 }
 
@@ -589,6 +616,7 @@ export type ProjectUpdateWithoutExpensesInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.FloatFieldUpdateOperationsInput | number
   actualCost?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   budget?: Prisma.BudgetUpdateOneRequiredWithoutProjectsNestedInput
 }
 
@@ -599,6 +627,7 @@ export type ProjectUncheckedUpdateWithoutExpensesInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.FloatFieldUpdateOperationsInput | number
   actualCost?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   budgetId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -609,6 +638,7 @@ export type ProjectCreateManyBudgetInput = {
   location: string
   estimatedCost: number
   actualCost?: number | null
+  isDeleted?: boolean
 }
 
 export type ProjectUpdateWithoutBudgetInput = {
@@ -618,6 +648,7 @@ export type ProjectUpdateWithoutBudgetInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.FloatFieldUpdateOperationsInput | number
   actualCost?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   expenses?: Prisma.ExpenseUpdateManyWithoutProjectNestedInput
 }
 
@@ -628,6 +659,7 @@ export type ProjectUncheckedUpdateWithoutBudgetInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.FloatFieldUpdateOperationsInput | number
   actualCost?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutProjectNestedInput
 }
 
@@ -638,6 +670,7 @@ export type ProjectUncheckedUpdateManyWithoutBudgetInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.FloatFieldUpdateOperationsInput | number
   actualCost?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -678,6 +711,7 @@ export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   location?: boolean
   estimatedCost?: boolean
   actualCost?: boolean
+  isDeleted?: boolean
   budgetId?: boolean
   budget?: boolean | Prisma.BudgetDefaultArgs<ExtArgs>
   expenses?: boolean | Prisma.Project$expensesArgs<ExtArgs>
@@ -691,6 +725,7 @@ export type ProjectSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   location?: boolean
   estimatedCost?: boolean
   actualCost?: boolean
+  isDeleted?: boolean
   budgetId?: boolean
   budget?: boolean | Prisma.BudgetDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
@@ -702,6 +737,7 @@ export type ProjectSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   location?: boolean
   estimatedCost?: boolean
   actualCost?: boolean
+  isDeleted?: boolean
   budgetId?: boolean
   budget?: boolean | Prisma.BudgetDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
@@ -713,10 +749,11 @@ export type ProjectSelectScalar = {
   location?: boolean
   estimatedCost?: boolean
   actualCost?: boolean
+  isDeleted?: boolean
   budgetId?: boolean
 }
 
-export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "location" | "estimatedCost" | "actualCost" | "budgetId", ExtArgs["result"]["project"]>
+export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "location" | "estimatedCost" | "actualCost" | "isDeleted" | "budgetId", ExtArgs["result"]["project"]>
 export type ProjectInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   budget?: boolean | Prisma.BudgetDefaultArgs<ExtArgs>
   expenses?: boolean | Prisma.Project$expensesArgs<ExtArgs>
@@ -742,6 +779,7 @@ export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     location: string
     estimatedCost: number
     actualCost: number | null
+    isDeleted: boolean
     budgetId: string
   }, ExtArgs["result"]["project"]>
   composites: {}
@@ -1174,6 +1212,7 @@ export interface ProjectFieldRefs {
   readonly location: Prisma.FieldRef<"Project", 'String'>
   readonly estimatedCost: Prisma.FieldRef<"Project", 'Float'>
   readonly actualCost: Prisma.FieldRef<"Project", 'Float'>
+  readonly isDeleted: Prisma.FieldRef<"Project", 'Boolean'>
   readonly budgetId: Prisma.FieldRef<"Project", 'String'>
 }
     
