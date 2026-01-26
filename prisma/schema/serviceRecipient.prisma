@@ -12,7 +12,7 @@ model ServiceRecipient {
     village   Village @relation(fields: [villageId], references: [id])
 
     donationId String
-    donation   Donation @relation(fields: [donationId], references: [id])
+    donation   donationSection @relation(fields: [donationId], references: [id])
 
     createdAt DateTime @default(now())
 }

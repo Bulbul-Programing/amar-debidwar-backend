@@ -2,6 +2,8 @@ import express from 'express';
 import { userRoutes } from '../modules/User/user.route';
 import { authRouter } from '../modules/Auth/auth.routes';
 import { fundSourceRoutes } from '../modules/FundSource/fundSource.route';
+import { donationSectionRoutes } from '../modules/DonactionSection/donationSection.route';
+import { BudgetRoutes } from '../modules/Project/project.route';
 
 type TModuleRoutes = {
     path: string,
@@ -22,7 +24,19 @@ const moduleRoutes: TModuleRoutes[] = [
     {
         path: "/fundSource",
         route: fundSourceRoutes
-    }
+    },
+    {
+        path: "/budge",
+        route: BudgetRoutes
+    },
+    {
+        path: "/project",
+        route: fundSourceRoutes
+    },
+    {
+        path: "/donationSection",
+        route: donationSectionRoutes
+    },
 ]
 
 moduleRoutes.forEach((route) => router.use(route.path, route.route))

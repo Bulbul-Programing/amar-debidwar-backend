@@ -1,6 +1,7 @@
-model Donation {
-    id    String @id @default(uuid())
-    title String
-
+model donationSection {
+    id         String             @id @default(uuid())
+    title      String
+    photo      String
+    isDeleted  Boolean            @default(false)
     recipients ServiceRecipient[]
 }

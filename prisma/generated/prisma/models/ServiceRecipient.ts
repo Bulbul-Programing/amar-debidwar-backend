@@ -9,8 +9,8 @@
  * 🟢 You can import this file directly.
  */
 import type * as runtime from "@prisma/client/runtime/client"
-import type * as $Enums from "../enums.ts"
-import type * as Prisma from "../internal/prismaNamespace.ts"
+import type * as $Enums from "../enums"
+import type * as Prisma from "../internal/prismaNamespace"
 
 /**
  * Model ServiceRecipient
@@ -216,7 +216,7 @@ export type ServiceRecipientWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"ServiceRecipient"> | Date | string
   union?: Prisma.XOR<Prisma.UnionScalarRelationFilter, Prisma.UnionWhereInput>
   village?: Prisma.XOR<Prisma.VillageScalarRelationFilter, Prisma.VillageWhereInput>
-  donation?: Prisma.XOR<Prisma.DonationScalarRelationFilter, Prisma.DonationWhereInput>
+  donation?: Prisma.XOR<Prisma.DonationSectionScalarRelationFilter, Prisma.donationSectionWhereInput>
 }
 
 export type ServiceRecipientOrderByWithRelationInput = {
@@ -231,7 +231,7 @@ export type ServiceRecipientOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   union?: Prisma.UnionOrderByWithRelationInput
   village?: Prisma.VillageOrderByWithRelationInput
-  donation?: Prisma.DonationOrderByWithRelationInput
+  donation?: Prisma.donationSectionOrderByWithRelationInput
 }
 
 export type ServiceRecipientWhereUniqueInput = Prisma.AtLeast<{
@@ -249,7 +249,7 @@ export type ServiceRecipientWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"ServiceRecipient"> | Date | string
   union?: Prisma.XOR<Prisma.UnionScalarRelationFilter, Prisma.UnionWhereInput>
   village?: Prisma.XOR<Prisma.VillageScalarRelationFilter, Prisma.VillageWhereInput>
-  donation?: Prisma.XOR<Prisma.DonationScalarRelationFilter, Prisma.DonationWhereInput>
+  donation?: Prisma.XOR<Prisma.DonationSectionScalarRelationFilter, Prisma.donationSectionWhereInput>
 }, "id" | "nidNumber">
 
 export type ServiceRecipientOrderByWithAggregationInput = {
@@ -291,7 +291,7 @@ export type ServiceRecipientCreateInput = {
   createdAt?: Date | string
   union: Prisma.UnionCreateNestedOneWithoutRecipientsInput
   village: Prisma.VillageCreateNestedOneWithoutRecipientsInput
-  donation: Prisma.DonationCreateNestedOneWithoutRecipientsInput
+  donation: Prisma.donationSectionCreateNestedOneWithoutRecipientsInput
 }
 
 export type ServiceRecipientUncheckedCreateInput = {
@@ -315,7 +315,7 @@ export type ServiceRecipientUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   union?: Prisma.UnionUpdateOneRequiredWithoutRecipientsNestedInput
   village?: Prisma.VillageUpdateOneRequiredWithoutRecipientsNestedInput
-  donation?: Prisma.DonationUpdateOneRequiredWithoutRecipientsNestedInput
+  donation?: Prisma.donationSectionUpdateOneRequiredWithoutRecipientsNestedInput
 }
 
 export type ServiceRecipientUncheckedUpdateInput = {
@@ -606,7 +606,7 @@ export type ServiceRecipientCreateWithoutUnionInput = {
   address: string
   createdAt?: Date | string
   village: Prisma.VillageCreateNestedOneWithoutRecipientsInput
-  donation: Prisma.DonationCreateNestedOneWithoutRecipientsInput
+  donation: Prisma.donationSectionCreateNestedOneWithoutRecipientsInput
 }
 
 export type ServiceRecipientUncheckedCreateWithoutUnionInput = {
@@ -654,7 +654,7 @@ export type ServiceRecipientCreateWithoutVillageInput = {
   address: string
   createdAt?: Date | string
   union: Prisma.UnionCreateNestedOneWithoutRecipientsInput
-  donation: Prisma.DonationCreateNestedOneWithoutRecipientsInput
+  donation: Prisma.donationSectionCreateNestedOneWithoutRecipientsInput
 }
 
 export type ServiceRecipientUncheckedCreateWithoutVillageInput = {
@@ -757,7 +757,7 @@ export type ServiceRecipientUpdateWithoutUnionInput = {
   address?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   village?: Prisma.VillageUpdateOneRequiredWithoutRecipientsNestedInput
-  donation?: Prisma.DonationUpdateOneRequiredWithoutRecipientsNestedInput
+  donation?: Prisma.donationSectionUpdateOneRequiredWithoutRecipientsNestedInput
 }
 
 export type ServiceRecipientUncheckedUpdateWithoutUnionInput = {
@@ -801,7 +801,7 @@ export type ServiceRecipientUpdateWithoutVillageInput = {
   address?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   union?: Prisma.UnionUpdateOneRequiredWithoutRecipientsNestedInput
-  donation?: Prisma.DonationUpdateOneRequiredWithoutRecipientsNestedInput
+  donation?: Prisma.donationSectionUpdateOneRequiredWithoutRecipientsNestedInput
 }
 
 export type ServiceRecipientUncheckedUpdateWithoutVillageInput = {
@@ -840,7 +840,7 @@ export type ServiceRecipientSelect<ExtArgs extends runtime.Types.Extensions.Inte
   createdAt?: boolean
   union?: boolean | Prisma.UnionDefaultArgs<ExtArgs>
   village?: boolean | Prisma.VillageDefaultArgs<ExtArgs>
-  donation?: boolean | Prisma.DonationDefaultArgs<ExtArgs>
+  donation?: boolean | Prisma.donationSectionDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["serviceRecipient"]>
 
 export type ServiceRecipientSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -855,7 +855,7 @@ export type ServiceRecipientSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   createdAt?: boolean
   union?: boolean | Prisma.UnionDefaultArgs<ExtArgs>
   village?: boolean | Prisma.VillageDefaultArgs<ExtArgs>
-  donation?: boolean | Prisma.DonationDefaultArgs<ExtArgs>
+  donation?: boolean | Prisma.donationSectionDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["serviceRecipient"]>
 
 export type ServiceRecipientSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -870,7 +870,7 @@ export type ServiceRecipientSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   createdAt?: boolean
   union?: boolean | Prisma.UnionDefaultArgs<ExtArgs>
   village?: boolean | Prisma.VillageDefaultArgs<ExtArgs>
-  donation?: boolean | Prisma.DonationDefaultArgs<ExtArgs>
+  donation?: boolean | Prisma.donationSectionDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["serviceRecipient"]>
 
 export type ServiceRecipientSelectScalar = {
@@ -889,17 +889,17 @@ export type ServiceRecipientOmit<ExtArgs extends runtime.Types.Extensions.Intern
 export type ServiceRecipientInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   union?: boolean | Prisma.UnionDefaultArgs<ExtArgs>
   village?: boolean | Prisma.VillageDefaultArgs<ExtArgs>
-  donation?: boolean | Prisma.DonationDefaultArgs<ExtArgs>
+  donation?: boolean | Prisma.donationSectionDefaultArgs<ExtArgs>
 }
 export type ServiceRecipientIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   union?: boolean | Prisma.UnionDefaultArgs<ExtArgs>
   village?: boolean | Prisma.VillageDefaultArgs<ExtArgs>
-  donation?: boolean | Prisma.DonationDefaultArgs<ExtArgs>
+  donation?: boolean | Prisma.donationSectionDefaultArgs<ExtArgs>
 }
 export type ServiceRecipientIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   union?: boolean | Prisma.UnionDefaultArgs<ExtArgs>
   village?: boolean | Prisma.VillageDefaultArgs<ExtArgs>
-  donation?: boolean | Prisma.DonationDefaultArgs<ExtArgs>
+  donation?: boolean | Prisma.donationSectionDefaultArgs<ExtArgs>
 }
 
 export type $ServiceRecipientPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -907,7 +907,7 @@ export type $ServiceRecipientPayload<ExtArgs extends runtime.Types.Extensions.In
   objects: {
     union: Prisma.$UnionPayload<ExtArgs>
     village: Prisma.$VillagePayload<ExtArgs>
-    donation: Prisma.$DonationPayload<ExtArgs>
+    donation: Prisma.$donationSectionPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1315,7 +1315,7 @@ export interface Prisma__ServiceRecipientClient<T, Null = never, ExtArgs extends
   readonly [Symbol.toStringTag]: "PrismaPromise"
   union<T extends Prisma.UnionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UnionDefaultArgs<ExtArgs>>): Prisma.Prisma__UnionClient<runtime.Types.Result.GetResult<Prisma.$UnionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   village<T extends Prisma.VillageDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.VillageDefaultArgs<ExtArgs>>): Prisma.Prisma__VillageClient<runtime.Types.Result.GetResult<Prisma.$VillagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  donation<T extends Prisma.DonationDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DonationDefaultArgs<ExtArgs>>): Prisma.Prisma__DonationClient<runtime.Types.Result.GetResult<Prisma.$DonationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  donation<T extends Prisma.donationSectionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.donationSectionDefaultArgs<ExtArgs>>): Prisma.Prisma__donationSectionClient<runtime.Types.Result.GetResult<Prisma.$donationSectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

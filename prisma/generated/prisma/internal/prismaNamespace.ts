@@ -16,10 +16,10 @@
  */
 
 import * as runtime from "@prisma/client/runtime/client"
-import type * as Prisma from "../models.ts"
-import { type PrismaClient } from "./class.ts"
+import type * as Prisma from "../models"
+import { type PrismaClient } from "./class"
 
-export type * from '../models.ts'
+export type * from '../models'
 
 export type DMMF = typeof runtime.DMMF
 
@@ -388,7 +388,7 @@ export const ModelName = {
   Budget: 'Budget',
   Complaint: 'Complaint',
   ComplaintCategory: 'ComplaintCategory',
-  Donation: 'Donation',
+  donationSection: 'donationSection',
   FundSource: 'FundSource',
   Project: 'Project',
   Expense: 'Expense',
@@ -412,7 +412,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "vendor" | "budget" | "complaint" | "complaintCategory" | "donation" | "fundSource" | "project" | "expense" | "expenseCategory" | "serviceRecipient" | "union" | "village" | "user"
+    modelProps: "vendor" | "budget" | "complaint" | "complaintCategory" | "donationSection" | "fundSource" | "project" | "expense" | "expenseCategory" | "serviceRecipient" | "union" | "village" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -712,77 +712,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Donation: {
-      payload: Prisma.$DonationPayload<ExtArgs>
-      fields: Prisma.DonationFieldRefs
+    donationSection: {
+      payload: Prisma.$donationSectionPayload<ExtArgs>
+      fields: Prisma.donationSectionFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.DonationFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonationPayload> | null
+          args: Prisma.donationSectionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$donationSectionPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.DonationFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonationPayload>
+          args: Prisma.donationSectionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$donationSectionPayload>
         }
         findFirst: {
-          args: Prisma.DonationFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonationPayload> | null
+          args: Prisma.donationSectionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$donationSectionPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.DonationFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonationPayload>
+          args: Prisma.donationSectionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$donationSectionPayload>
         }
         findMany: {
-          args: Prisma.DonationFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonationPayload>[]
+          args: Prisma.donationSectionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$donationSectionPayload>[]
         }
         create: {
-          args: Prisma.DonationCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonationPayload>
+          args: Prisma.donationSectionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$donationSectionPayload>
         }
         createMany: {
-          args: Prisma.DonationCreateManyArgs<ExtArgs>
+          args: Prisma.donationSectionCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.DonationCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonationPayload>[]
+          args: Prisma.donationSectionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$donationSectionPayload>[]
         }
         delete: {
-          args: Prisma.DonationDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonationPayload>
+          args: Prisma.donationSectionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$donationSectionPayload>
         }
         update: {
-          args: Prisma.DonationUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonationPayload>
+          args: Prisma.donationSectionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$donationSectionPayload>
         }
         deleteMany: {
-          args: Prisma.DonationDeleteManyArgs<ExtArgs>
+          args: Prisma.donationSectionDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.DonationUpdateManyArgs<ExtArgs>
+          args: Prisma.donationSectionUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.DonationUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonationPayload>[]
+          args: Prisma.donationSectionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$donationSectionPayload>[]
         }
         upsert: {
-          args: Prisma.DonationUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonationPayload>
+          args: Prisma.donationSectionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$donationSectionPayload>
         }
         aggregate: {
-          args: Prisma.DonationAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateDonation>
+          args: Prisma.DonationSectionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDonationSection>
         }
         groupBy: {
-          args: Prisma.DonationGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.DonationGroupByOutputType>[]
+          args: Prisma.donationSectionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DonationSectionGroupByOutputType>[]
         }
         count: {
-          args: Prisma.DonationCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.DonationCountAggregateOutputType> | number
+          args: Prisma.donationSectionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DonationSectionCountAggregateOutputType> | number
         }
       }
     }
@@ -1470,12 +1470,14 @@ export const ComplaintCategoryScalarFieldEnum = {
 export type ComplaintCategoryScalarFieldEnum = (typeof ComplaintCategoryScalarFieldEnum)[keyof typeof ComplaintCategoryScalarFieldEnum]
 
 
-export const DonationScalarFieldEnum = {
+export const DonationSectionScalarFieldEnum = {
   id: 'id',
-  title: 'title'
+  title: 'title',
+  photo: 'photo',
+  isDeleted: 'isDeleted'
 } as const
 
-export type DonationScalarFieldEnum = (typeof DonationScalarFieldEnum)[keyof typeof DonationScalarFieldEnum]
+export type DonationSectionScalarFieldEnum = (typeof DonationSectionScalarFieldEnum)[keyof typeof DonationSectionScalarFieldEnum]
 
 
 export const FundSourceScalarFieldEnum = {
@@ -1787,7 +1789,7 @@ export type GlobalOmitConfig = {
   budget?: Prisma.BudgetOmit
   complaint?: Prisma.ComplaintOmit
   complaintCategory?: Prisma.ComplaintCategoryOmit
-  donation?: Prisma.DonationOmit
+  donationSection?: Prisma.donationSectionOmit
   fundSource?: Prisma.FundSourceOmit
   project?: Prisma.ProjectOmit
   expense?: Prisma.ExpenseOmit

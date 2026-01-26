@@ -14,6 +14,8 @@ const createUserSchema = z.object({
         .min(6, "Password must be at least 6 characters long")
         .max(20, "Password cannot exceed 20 characters"),
 
+    profilePhoto: z.url().optional(),
+
     email: z
         .string()
         .trim()
