@@ -41,7 +41,7 @@ export type ExpenseMinAggregateOutputType = {
   expenseDate: Date | null
   chalanImage: string | null
   projectId: string | null
-  category: string | null
+  categoryId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -53,7 +53,7 @@ export type ExpenseMaxAggregateOutputType = {
   expenseDate: Date | null
   chalanImage: string | null
   projectId: string | null
-  category: string | null
+  categoryId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -65,7 +65,7 @@ export type ExpenseCountAggregateOutputType = {
   expenseDate: number
   chalanImage: number
   projectId: number
-  category: number
+  categoryId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -87,7 +87,7 @@ export type ExpenseMinAggregateInputType = {
   expenseDate?: true
   chalanImage?: true
   projectId?: true
-  category?: true
+  categoryId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -99,7 +99,7 @@ export type ExpenseMaxAggregateInputType = {
   expenseDate?: true
   chalanImage?: true
   projectId?: true
-  category?: true
+  categoryId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -111,7 +111,7 @@ export type ExpenseCountAggregateInputType = {
   expenseDate?: true
   chalanImage?: true
   projectId?: true
-  category?: true
+  categoryId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -210,7 +210,7 @@ export type ExpenseGroupByOutputType = {
   expenseDate: Date
   chalanImage: string | null
   projectId: string
-  category: string
+  categoryId: string
   createdAt: Date
   updatedAt: Date
   _count: ExpenseCountAggregateOutputType | null
@@ -245,7 +245,7 @@ export type ExpenseWhereInput = {
   expenseDate?: Prisma.DateTimeFilter<"Expense"> | Date | string
   chalanImage?: Prisma.StringNullableFilter<"Expense"> | string | null
   projectId?: Prisma.StringFilter<"Expense"> | string
-  category?: Prisma.StringFilter<"Expense"> | string
+  categoryId?: Prisma.StringFilter<"Expense"> | string
   createdAt?: Prisma.DateTimeFilter<"Expense"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Expense"> | Date | string
   project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
@@ -259,7 +259,7 @@ export type ExpenseOrderByWithRelationInput = {
   expenseDate?: Prisma.SortOrder
   chalanImage?: Prisma.SortOrderInput | Prisma.SortOrder
   projectId?: Prisma.SortOrder
-  category?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   project?: Prisma.ProjectOrderByWithRelationInput
@@ -276,7 +276,7 @@ export type ExpenseWhereUniqueInput = Prisma.AtLeast<{
   expenseDate?: Prisma.DateTimeFilter<"Expense"> | Date | string
   chalanImage?: Prisma.StringNullableFilter<"Expense"> | string | null
   projectId?: Prisma.StringFilter<"Expense"> | string
-  category?: Prisma.StringFilter<"Expense"> | string
+  categoryId?: Prisma.StringFilter<"Expense"> | string
   createdAt?: Prisma.DateTimeFilter<"Expense"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Expense"> | Date | string
   project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
@@ -290,7 +290,7 @@ export type ExpenseOrderByWithAggregationInput = {
   expenseDate?: Prisma.SortOrder
   chalanImage?: Prisma.SortOrderInput | Prisma.SortOrder
   projectId?: Prisma.SortOrder
-  category?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ExpenseCountOrderByAggregateInput
@@ -310,7 +310,7 @@ export type ExpenseScalarWhereWithAggregatesInput = {
   expenseDate?: Prisma.DateTimeWithAggregatesFilter<"Expense"> | Date | string
   chalanImage?: Prisma.StringNullableWithAggregatesFilter<"Expense"> | string | null
   projectId?: Prisma.StringWithAggregatesFilter<"Expense"> | string
-  category?: Prisma.StringWithAggregatesFilter<"Expense"> | string
+  categoryId?: Prisma.StringWithAggregatesFilter<"Expense"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Expense"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Expense"> | Date | string
 }
@@ -334,7 +334,7 @@ export type ExpenseUncheckedCreateInput = {
   expenseDate: Date | string
   chalanImage?: string | null
   projectId: string
-  category: string
+  categoryId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -358,7 +358,7 @@ export type ExpenseUncheckedUpdateInput = {
   expenseDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   chalanImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   projectId?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.StringFieldUpdateOperationsInput | string
+  categoryId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -370,7 +370,7 @@ export type ExpenseCreateManyInput = {
   expenseDate: Date | string
   chalanImage?: string | null
   projectId: string
-  category: string
+  categoryId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -392,7 +392,7 @@ export type ExpenseUncheckedUpdateManyInput = {
   expenseDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   chalanImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   projectId?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.StringFieldUpdateOperationsInput | string
+  categoryId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -414,7 +414,7 @@ export type ExpenseCountOrderByAggregateInput = {
   expenseDate?: Prisma.SortOrder
   chalanImage?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
-  category?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -430,7 +430,7 @@ export type ExpenseMaxOrderByAggregateInput = {
   expenseDate?: Prisma.SortOrder
   chalanImage?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
-  category?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -442,7 +442,7 @@ export type ExpenseMinOrderByAggregateInput = {
   expenseDate?: Prisma.SortOrder
   chalanImage?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
-  category?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -552,7 +552,7 @@ export type ExpenseUncheckedCreateWithoutProjectInput = {
   amount: number
   expenseDate: Date | string
   chalanImage?: string | null
-  category: string
+  categoryId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -593,7 +593,7 @@ export type ExpenseScalarWhereInput = {
   expenseDate?: Prisma.DateTimeFilter<"Expense"> | Date | string
   chalanImage?: Prisma.StringNullableFilter<"Expense"> | string | null
   projectId?: Prisma.StringFilter<"Expense"> | string
-  category?: Prisma.StringFilter<"Expense"> | string
+  categoryId?: Prisma.StringFilter<"Expense"> | string
   createdAt?: Prisma.DateTimeFilter<"Expense"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Expense"> | Date | string
 }
@@ -652,7 +652,7 @@ export type ExpenseCreateManyProjectInput = {
   amount: number
   expenseDate: Date | string
   chalanImage?: string | null
-  category: string
+  categoryId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -674,7 +674,7 @@ export type ExpenseUncheckedUpdateWithoutProjectInput = {
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   expenseDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   chalanImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.StringFieldUpdateOperationsInput | string
+  categoryId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -685,7 +685,7 @@ export type ExpenseUncheckedUpdateManyWithoutProjectInput = {
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   expenseDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   chalanImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.StringFieldUpdateOperationsInput | string
+  categoryId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -743,7 +743,7 @@ export type ExpenseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   expenseDate?: boolean
   chalanImage?: boolean
   projectId?: boolean
-  category?: boolean
+  categoryId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
@@ -757,7 +757,7 @@ export type ExpenseSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   expenseDate?: boolean
   chalanImage?: boolean
   projectId?: boolean
-  category?: boolean
+  categoryId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
@@ -771,7 +771,7 @@ export type ExpenseSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   expenseDate?: boolean
   chalanImage?: boolean
   projectId?: boolean
-  category?: boolean
+  categoryId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
@@ -785,12 +785,12 @@ export type ExpenseSelectScalar = {
   expenseDate?: boolean
   chalanImage?: boolean
   projectId?: boolean
-  category?: boolean
+  categoryId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ExpenseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "description" | "amount" | "expenseDate" | "chalanImage" | "projectId" | "category" | "createdAt" | "updatedAt", ExtArgs["result"]["expense"]>
+export type ExpenseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "description" | "amount" | "expenseDate" | "chalanImage" | "projectId" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["expense"]>
 export type ExpenseInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
   expenseCategory?: boolean | Prisma.Expense$expenseCategoryArgs<ExtArgs>
@@ -817,7 +817,7 @@ export type $ExpensePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     expenseDate: Date
     chalanImage: string | null
     projectId: string
-    category: string
+    categoryId: string
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["expense"]>
@@ -1251,7 +1251,7 @@ export interface ExpenseFieldRefs {
   readonly expenseDate: Prisma.FieldRef<"Expense", 'DateTime'>
   readonly chalanImage: Prisma.FieldRef<"Expense", 'String'>
   readonly projectId: Prisma.FieldRef<"Expense", 'String'>
-  readonly category: Prisma.FieldRef<"Expense", 'String'>
+  readonly categoryId: Prisma.FieldRef<"Expense", 'String'>
   readonly createdAt: Prisma.FieldRef<"Expense", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Expense", 'DateTime'>
 }

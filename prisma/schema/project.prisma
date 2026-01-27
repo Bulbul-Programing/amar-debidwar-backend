@@ -23,8 +23,8 @@ model Expense {
     projectId String
     project   Project @relation(fields: [projectId], references: [id])
 
-    category        String
-    expenseCategory ExpenseCategory? @relation(fields: [category], references: [id])
+    categoryId      String
+    expenseCategory ExpenseCategory? @relation(fields: [categoryId], references: [id])
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

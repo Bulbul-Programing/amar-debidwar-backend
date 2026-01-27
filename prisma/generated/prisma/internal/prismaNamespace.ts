@@ -1425,7 +1425,7 @@ export const ExpenseScalarFieldEnum = {
   expenseDate: 'expenseDate',
   chalanImage: 'chalanImage',
   projectId: 'projectId',
-  category: 'category',
+  categoryId: 'categoryId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
