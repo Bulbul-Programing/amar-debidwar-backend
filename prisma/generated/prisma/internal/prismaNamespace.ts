@@ -384,7 +384,6 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Vendor: 'Vendor',
   Budget: 'Budget',
   Complaint: 'Complaint',
   ComplaintCategory: 'ComplaintCategory',
@@ -412,84 +411,10 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "vendor" | "budget" | "complaint" | "complaintCategory" | "donationSection" | "fundSource" | "project" | "expense" | "expenseCategory" | "serviceRecipient" | "union" | "village" | "user"
+    modelProps: "budget" | "complaint" | "complaintCategory" | "donationSection" | "fundSource" | "project" | "expense" | "expenseCategory" | "serviceRecipient" | "union" | "village" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
-    Vendor: {
-      payload: Prisma.$VendorPayload<ExtArgs>
-      fields: Prisma.VendorFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.VendorFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendorPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.VendorFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendorPayload>
-        }
-        findFirst: {
-          args: Prisma.VendorFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendorPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.VendorFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendorPayload>
-        }
-        findMany: {
-          args: Prisma.VendorFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendorPayload>[]
-        }
-        create: {
-          args: Prisma.VendorCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendorPayload>
-        }
-        createMany: {
-          args: Prisma.VendorCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.VendorCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendorPayload>[]
-        }
-        delete: {
-          args: Prisma.VendorDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendorPayload>
-        }
-        update: {
-          args: Prisma.VendorUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendorPayload>
-        }
-        deleteMany: {
-          args: Prisma.VendorDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.VendorUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.VendorUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendorPayload>[]
-        }
-        upsert: {
-          args: Prisma.VendorUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendorPayload>
-        }
-        aggregate: {
-          args: Prisma.VendorAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateVendor>
-        }
-        groupBy: {
-          args: Prisma.VendorGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.VendorGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.VendorCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.VendorCountAggregateOutputType> | number
-        }
-      }
-    }
     Budget: {
       payload: Prisma.$BudgetPayload<ExtArgs>
       fields: Prisma.BudgetFieldRefs
@@ -1417,17 +1342,6 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const VendorScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  shopName: 'shopName',
-  shopLocation: 'shopLocation',
-  phone: 'phone'
-} as const
-
-export type VendorScalarFieldEnum = (typeof VendorScalarFieldEnum)[keyof typeof VendorScalarFieldEnum]
-
-
 export const BudgetScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -1510,7 +1424,6 @@ export const ExpenseScalarFieldEnum = {
   amount: 'amount',
   expenseDate: 'expenseDate',
   chalanImage: 'chalanImage',
-  vendorId: 'vendorId',
   projectId: 'projectId',
   category: 'category',
   createdAt: 'createdAt',
@@ -1785,7 +1698,6 @@ export type PrismaClientOptions = ({
   comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
-  vendor?: Prisma.VendorOmit
   budget?: Prisma.BudgetOmit
   complaint?: Prisma.ComplaintOmit
   complaintCategory?: Prisma.ComplaintCategoryOmit

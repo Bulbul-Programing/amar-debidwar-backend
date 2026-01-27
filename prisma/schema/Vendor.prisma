@@ -1,9 +1,0 @@
-model Vendor {
-    id           String @id @default(uuid())
-    name         String
-    shopName     String
-    shopLocation String
-    phone        String
-
-    expenses Expense[]
-}

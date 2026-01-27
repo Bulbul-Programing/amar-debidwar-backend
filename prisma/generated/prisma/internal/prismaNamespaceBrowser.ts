@@ -51,7 +51,6 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Vendor: 'Vendor',
   Budget: 'Budget',
   Complaint: 'Complaint',
   ComplaintCategory: 'ComplaintCategory',
@@ -80,17 +79,6 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
-
-
-export const VendorScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  shopName: 'shopName',
-  shopLocation: 'shopLocation',
-  phone: 'phone'
-} as const
-
-export type VendorScalarFieldEnum = (typeof VendorScalarFieldEnum)[keyof typeof VendorScalarFieldEnum]
 
 
 export const BudgetScalarFieldEnum = {
@@ -175,7 +163,6 @@ export const ExpenseScalarFieldEnum = {
   amount: 'amount',
   expenseDate: 'expenseDate',
   chalanImage: 'chalanImage',
-  vendorId: 'vendorId',
   projectId: 'projectId',
   category: 'category',
   createdAt: 'createdAt',

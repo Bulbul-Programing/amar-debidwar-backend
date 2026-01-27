@@ -8,7 +8,6 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Vendor'
 export type * from './models/Budget'
 export type * from './models/Complaint'
 export type * from './models/ComplaintCategory'

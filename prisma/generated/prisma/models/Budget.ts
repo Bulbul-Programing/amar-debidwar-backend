@@ -483,6 +483,10 @@ export type BudgetScalarRelationFilter = {
   isNot?: Prisma.BudgetWhereInput
 }
 
+export type StringFieldUpdateOperationsInput = {
+  set?: string
+}
+
 export type FloatFieldUpdateOperationsInput = {
   set?: number
   increment?: number
