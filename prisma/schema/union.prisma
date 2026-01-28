@@ -1,23 +1,23 @@
 model Union {
-  id          String   @id @default(uuid())
-  name        String   @unique
-  population  Int?
+  id         String @id @default(uuid())
+  name       String @unique
+  population Int?
 
-  villages    Village[]
-  recipients  ServiceRecipient[]
+  villages   Village[]
+  recipients ServiceRecipient[]
 
-  createdAt   DateTime @default(now())
+  createdAt DateTime @default(now())
 }
 
 model Village {
-  id          String   @id @default(uuid())
-  name        String
-  population  Int?
+  id         String @id @default(uuid())
+  name       String @unique
+  population Int?
 
-  unionId     String
-  union       Union    @relation(fields: [unionId], references: [id])
+  unionId String
+  union   Union  @relation(fields: [unionId], references: [id])
 
-  recipients  ServiceRecipient[]
+  recipients ServiceRecipient[]
 
   @@unique([name, unionId])
 }

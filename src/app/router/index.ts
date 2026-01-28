@@ -8,6 +8,8 @@ import { BudgetRoutes } from '../modules/Budge/budge.route';
 import { expenseCategoryRoutes } from '../modules/expenseCategory/expenseCategory.route';
 import { expenseRoutes } from '../modules/expence/expense.route';
 import { serviceRecipientRoutes } from '../modules/serviceRecipient/serviceRecipient.route';
+import { villageRoutes } from '../modules/village/village.route';
+import { unionRoutes } from '../modules/Union/union.route';
 
 type TModuleRoutes = {
     path: string,
@@ -44,6 +46,14 @@ const moduleRoutes: TModuleRoutes[] = [
     {
         path: "/expense",
         route: expenseRoutes
+    },
+    {
+        path: "/union",
+        route: unionRoutes
+    },
+    {
+        path: "/village",
+        route: villageRoutes
     },
     {
         path: "/donationSection",

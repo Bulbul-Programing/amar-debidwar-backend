@@ -223,16 +223,16 @@ export type VillageOrderByWithRelationInput = {
 
 export type VillageWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  name?: string
   name_unionId?: Prisma.VillageNameUnionIdCompoundUniqueInput
   AND?: Prisma.VillageWhereInput | Prisma.VillageWhereInput[]
   OR?: Prisma.VillageWhereInput[]
   NOT?: Prisma.VillageWhereInput | Prisma.VillageWhereInput[]
-  name?: Prisma.StringFilter<"Village"> | string
   population?: Prisma.IntNullableFilter<"Village"> | number | null
   unionId?: Prisma.StringFilter<"Village"> | string
   union?: Prisma.XOR<Prisma.UnionScalarRelationFilter, Prisma.UnionWhereInput>
   recipients?: Prisma.ServiceRecipientListRelationFilter
-}, "id" | "name_unionId">
+}, "id" | "name" | "name_unionId">
 
 export type VillageOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
