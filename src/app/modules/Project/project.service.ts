@@ -20,7 +20,13 @@ const createProject = async (data: TProject) => {
 const getAllProjects = async () => {
     return await prisma.project.findMany({
         where: { isDeleted: false },
-        include: { budget: true },
+        include: {
+            budget: {
+                include: {
+                    fundSource: true
+                }
+            }
+        },
         orderBy: { title: "asc" },
     });
 };
@@ -28,7 +34,14 @@ const getAllProjects = async () => {
 const getProjectById = async (id: string) => {
     const isExistProject = await prisma.project.findUnique({
         where: { id, isDeleted: false },
-        include: { budget: true, expenses: true },
+        include: {
+            budget: {
+                include: {
+                    fundSource: true
+                }
+            },
+            expenses: true
+        },
     });
     if (!isExistProject) {
         throw new AppError(404, "Budge not found!")
@@ -64,7 +77,7 @@ const updateProject = async (id: string, data: Partial<TProject>) => {
 
 const deleteProject = async (id: string) => {
     const isExistProject = await prisma.project.findUnique({
-        where: { id },
+        where: { id, isDeleted: false },
         include: { budget: true, expenses: true },
     });
     if (!isExistProject) {

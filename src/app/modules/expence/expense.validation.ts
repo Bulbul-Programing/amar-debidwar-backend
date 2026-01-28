@@ -1,31 +1,37 @@
-import z from "zod";
+import { z } from "zod";
 
-export const fundSourceCreateValidation = z.object({
-    name: z
+const createExpenseSchema = z.object({
+    description: z
         .string()
         .trim()
-        .min(2, "Name must be at least 2 characters long")
-        .max(100, "Name cannot exceed 100 characters"),
+        .min(5, "Description must be at least 5 characters long")
+        .max(500, "Description cannot exceed 500 characters"),
 
-    ministry: z
-        .string()
-        .trim()
-        .min(2, "Name must be at least 2 characters long")
-        .max(100, "Name cannot exceed 100 characters"),
+    amount: z
+        .number()
+        .positive("Amount must be a positive number"),
+
+    expenseDate: z
+        .coerce
+        .date({
+            error: "Expense date must be a valid date",
+        }),
+
+    chalanImage: z
+        .url("Chalan image must be a valid URL")
+        .optional()
+        .nullable(),
+
+    projectId: z
+        .uuid("Project ID must be a valid UUID"),
+
+    categoryId: z
+        .uuid("Expense category ID must be a valid UUID"),
 });
 
-export const fundSourceUpdateValidation = z.object({
-    name: z
-        .string()
-        .trim()
-        .min(2, "Name must be at least 2 characters long")
-        .max(100, "Name cannot exceed 100 characters")
-        .optional(),
+const updateExpenseSchema = createExpenseSchema.partial();
 
-    ministry: z
-        .string()
-        .trim()
-        .min(2, "Name must be at least 2 characters long")
-        .max(100, "Name cannot exceed 100 characters")
-        .optional(),
-});
+export const expenseValidation = {
+    createExpenseSchema,
+    updateExpenseSchema,
+};

@@ -4,7 +4,7 @@ model Project {
     description   String
     location      String
     estimatedCost Float
-    actualCost    Float?
+    actualCost    Float? @default(0)
     isDeleted     Boolean @default(false)
 
     budgetId String

@@ -34,6 +34,7 @@ export type ServiceRecipientMinAggregateOutputType = {
   villageId: string | null
   donationId: string | null
   createdAt: Date | null
+  updateAt: Date | null
 }
 
 export type ServiceRecipientMaxAggregateOutputType = {
@@ -46,6 +47,7 @@ export type ServiceRecipientMaxAggregateOutputType = {
   villageId: string | null
   donationId: string | null
   createdAt: Date | null
+  updateAt: Date | null
 }
 
 export type ServiceRecipientCountAggregateOutputType = {
@@ -58,6 +60,7 @@ export type ServiceRecipientCountAggregateOutputType = {
   villageId: number
   donationId: number
   createdAt: number
+  updateAt: number
   _all: number
 }
 
@@ -72,6 +75,7 @@ export type ServiceRecipientMinAggregateInputType = {
   villageId?: true
   donationId?: true
   createdAt?: true
+  updateAt?: true
 }
 
 export type ServiceRecipientMaxAggregateInputType = {
@@ -84,6 +88,7 @@ export type ServiceRecipientMaxAggregateInputType = {
   villageId?: true
   donationId?: true
   createdAt?: true
+  updateAt?: true
 }
 
 export type ServiceRecipientCountAggregateInputType = {
@@ -96,6 +101,7 @@ export type ServiceRecipientCountAggregateInputType = {
   villageId?: true
   donationId?: true
   createdAt?: true
+  updateAt?: true
   _all?: true
 }
 
@@ -181,6 +187,7 @@ export type ServiceRecipientGroupByOutputType = {
   villageId: string
   donationId: string
   createdAt: Date
+  updateAt: Date
   _count: ServiceRecipientCountAggregateOutputType | null
   _min: ServiceRecipientMinAggregateOutputType | null
   _max: ServiceRecipientMaxAggregateOutputType | null
@@ -214,6 +221,7 @@ export type ServiceRecipientWhereInput = {
   villageId?: Prisma.StringFilter<"ServiceRecipient"> | string
   donationId?: Prisma.StringFilter<"ServiceRecipient"> | string
   createdAt?: Prisma.DateTimeFilter<"ServiceRecipient"> | Date | string
+  updateAt?: Prisma.DateTimeFilter<"ServiceRecipient"> | Date | string
   union?: Prisma.XOR<Prisma.UnionScalarRelationFilter, Prisma.UnionWhereInput>
   village?: Prisma.XOR<Prisma.VillageScalarRelationFilter, Prisma.VillageWhereInput>
   donation?: Prisma.XOR<Prisma.DonationSectionScalarRelationFilter, Prisma.donationSectionWhereInput>
@@ -229,6 +237,7 @@ export type ServiceRecipientOrderByWithRelationInput = {
   villageId?: Prisma.SortOrder
   donationId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
   union?: Prisma.UnionOrderByWithRelationInput
   village?: Prisma.VillageOrderByWithRelationInput
   donation?: Prisma.donationSectionOrderByWithRelationInput
@@ -247,6 +256,7 @@ export type ServiceRecipientWhereUniqueInput = Prisma.AtLeast<{
   villageId?: Prisma.StringFilter<"ServiceRecipient"> | string
   donationId?: Prisma.StringFilter<"ServiceRecipient"> | string
   createdAt?: Prisma.DateTimeFilter<"ServiceRecipient"> | Date | string
+  updateAt?: Prisma.DateTimeFilter<"ServiceRecipient"> | Date | string
   union?: Prisma.XOR<Prisma.UnionScalarRelationFilter, Prisma.UnionWhereInput>
   village?: Prisma.XOR<Prisma.VillageScalarRelationFilter, Prisma.VillageWhereInput>
   donation?: Prisma.XOR<Prisma.DonationSectionScalarRelationFilter, Prisma.donationSectionWhereInput>
@@ -262,6 +272,7 @@ export type ServiceRecipientOrderByWithAggregationInput = {
   villageId?: Prisma.SortOrder
   donationId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
   _count?: Prisma.ServiceRecipientCountOrderByAggregateInput
   _max?: Prisma.ServiceRecipientMaxOrderByAggregateInput
   _min?: Prisma.ServiceRecipientMinOrderByAggregateInput
@@ -280,6 +291,7 @@ export type ServiceRecipientScalarWhereWithAggregatesInput = {
   villageId?: Prisma.StringWithAggregatesFilter<"ServiceRecipient"> | string
   donationId?: Prisma.StringWithAggregatesFilter<"ServiceRecipient"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ServiceRecipient"> | Date | string
+  updateAt?: Prisma.DateTimeWithAggregatesFilter<"ServiceRecipient"> | Date | string
 }
 
 export type ServiceRecipientCreateInput = {
@@ -289,6 +301,7 @@ export type ServiceRecipientCreateInput = {
   nidNumber: string
   address: string
   createdAt?: Date | string
+  updateAt?: Date | string
   union: Prisma.UnionCreateNestedOneWithoutRecipientsInput
   village: Prisma.VillageCreateNestedOneWithoutRecipientsInput
   donation: Prisma.donationSectionCreateNestedOneWithoutRecipientsInput
@@ -304,6 +317,7 @@ export type ServiceRecipientUncheckedCreateInput = {
   villageId: string
   donationId: string
   createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type ServiceRecipientUpdateInput = {
@@ -313,6 +327,7 @@ export type ServiceRecipientUpdateInput = {
   nidNumber?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   union?: Prisma.UnionUpdateOneRequiredWithoutRecipientsNestedInput
   village?: Prisma.VillageUpdateOneRequiredWithoutRecipientsNestedInput
   donation?: Prisma.donationSectionUpdateOneRequiredWithoutRecipientsNestedInput
@@ -328,6 +343,7 @@ export type ServiceRecipientUncheckedUpdateInput = {
   villageId?: Prisma.StringFieldUpdateOperationsInput | string
   donationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServiceRecipientCreateManyInput = {
@@ -340,6 +356,7 @@ export type ServiceRecipientCreateManyInput = {
   villageId: string
   donationId: string
   createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type ServiceRecipientUpdateManyMutationInput = {
@@ -349,6 +366,7 @@ export type ServiceRecipientUpdateManyMutationInput = {
   nidNumber?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServiceRecipientUncheckedUpdateManyInput = {
@@ -361,6 +379,7 @@ export type ServiceRecipientUncheckedUpdateManyInput = {
   villageId?: Prisma.StringFieldUpdateOperationsInput | string
   donationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServiceRecipientListRelationFilter = {
@@ -383,6 +402,7 @@ export type ServiceRecipientCountOrderByAggregateInput = {
   villageId?: Prisma.SortOrder
   donationId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
 }
 
 export type ServiceRecipientMaxOrderByAggregateInput = {
@@ -395,6 +415,7 @@ export type ServiceRecipientMaxOrderByAggregateInput = {
   villageId?: Prisma.SortOrder
   donationId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
 }
 
 export type ServiceRecipientMinOrderByAggregateInput = {
@@ -407,6 +428,7 @@ export type ServiceRecipientMinOrderByAggregateInput = {
   villageId?: Prisma.SortOrder
   donationId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updateAt?: Prisma.SortOrder
 }
 
 export type ServiceRecipientCreateNestedManyWithoutDonationInput = {
@@ -542,6 +564,7 @@ export type ServiceRecipientCreateWithoutDonationInput = {
   nidNumber: string
   address: string
   createdAt?: Date | string
+  updateAt?: Date | string
   union: Prisma.UnionCreateNestedOneWithoutRecipientsInput
   village: Prisma.VillageCreateNestedOneWithoutRecipientsInput
 }
@@ -555,6 +578,7 @@ export type ServiceRecipientUncheckedCreateWithoutDonationInput = {
   unionId: string
   villageId: string
   createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type ServiceRecipientCreateOrConnectWithoutDonationInput = {
@@ -596,6 +620,7 @@ export type ServiceRecipientScalarWhereInput = {
   villageId?: Prisma.StringFilter<"ServiceRecipient"> | string
   donationId?: Prisma.StringFilter<"ServiceRecipient"> | string
   createdAt?: Prisma.DateTimeFilter<"ServiceRecipient"> | Date | string
+  updateAt?: Prisma.DateTimeFilter<"ServiceRecipient"> | Date | string
 }
 
 export type ServiceRecipientCreateWithoutUnionInput = {
@@ -605,6 +630,7 @@ export type ServiceRecipientCreateWithoutUnionInput = {
   nidNumber: string
   address: string
   createdAt?: Date | string
+  updateAt?: Date | string
   village: Prisma.VillageCreateNestedOneWithoutRecipientsInput
   donation: Prisma.donationSectionCreateNestedOneWithoutRecipientsInput
 }
@@ -618,6 +644,7 @@ export type ServiceRecipientUncheckedCreateWithoutUnionInput = {
   villageId: string
   donationId: string
   createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type ServiceRecipientCreateOrConnectWithoutUnionInput = {
@@ -653,6 +680,7 @@ export type ServiceRecipientCreateWithoutVillageInput = {
   nidNumber: string
   address: string
   createdAt?: Date | string
+  updateAt?: Date | string
   union: Prisma.UnionCreateNestedOneWithoutRecipientsInput
   donation: Prisma.donationSectionCreateNestedOneWithoutRecipientsInput
 }
@@ -666,6 +694,7 @@ export type ServiceRecipientUncheckedCreateWithoutVillageInput = {
   unionId: string
   donationId: string
   createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type ServiceRecipientCreateOrConnectWithoutVillageInput = {
@@ -703,6 +732,7 @@ export type ServiceRecipientCreateManyDonationInput = {
   unionId: string
   villageId: string
   createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type ServiceRecipientUpdateWithoutDonationInput = {
@@ -712,6 +742,7 @@ export type ServiceRecipientUpdateWithoutDonationInput = {
   nidNumber?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   union?: Prisma.UnionUpdateOneRequiredWithoutRecipientsNestedInput
   village?: Prisma.VillageUpdateOneRequiredWithoutRecipientsNestedInput
 }
@@ -725,6 +756,7 @@ export type ServiceRecipientUncheckedUpdateWithoutDonationInput = {
   unionId?: Prisma.StringFieldUpdateOperationsInput | string
   villageId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServiceRecipientUncheckedUpdateManyWithoutDonationInput = {
@@ -736,6 +768,7 @@ export type ServiceRecipientUncheckedUpdateManyWithoutDonationInput = {
   unionId?: Prisma.StringFieldUpdateOperationsInput | string
   villageId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServiceRecipientCreateManyUnionInput = {
@@ -747,6 +780,7 @@ export type ServiceRecipientCreateManyUnionInput = {
   villageId: string
   donationId: string
   createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type ServiceRecipientUpdateWithoutUnionInput = {
@@ -756,6 +790,7 @@ export type ServiceRecipientUpdateWithoutUnionInput = {
   nidNumber?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   village?: Prisma.VillageUpdateOneRequiredWithoutRecipientsNestedInput
   donation?: Prisma.donationSectionUpdateOneRequiredWithoutRecipientsNestedInput
 }
@@ -769,6 +804,7 @@ export type ServiceRecipientUncheckedUpdateWithoutUnionInput = {
   villageId?: Prisma.StringFieldUpdateOperationsInput | string
   donationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServiceRecipientUncheckedUpdateManyWithoutUnionInput = {
@@ -780,6 +816,7 @@ export type ServiceRecipientUncheckedUpdateManyWithoutUnionInput = {
   villageId?: Prisma.StringFieldUpdateOperationsInput | string
   donationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServiceRecipientCreateManyVillageInput = {
@@ -791,6 +828,7 @@ export type ServiceRecipientCreateManyVillageInput = {
   unionId: string
   donationId: string
   createdAt?: Date | string
+  updateAt?: Date | string
 }
 
 export type ServiceRecipientUpdateWithoutVillageInput = {
@@ -800,6 +838,7 @@ export type ServiceRecipientUpdateWithoutVillageInput = {
   nidNumber?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   union?: Prisma.UnionUpdateOneRequiredWithoutRecipientsNestedInput
   donation?: Prisma.donationSectionUpdateOneRequiredWithoutRecipientsNestedInput
 }
@@ -813,6 +852,7 @@ export type ServiceRecipientUncheckedUpdateWithoutVillageInput = {
   unionId?: Prisma.StringFieldUpdateOperationsInput | string
   donationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServiceRecipientUncheckedUpdateManyWithoutVillageInput = {
@@ -824,6 +864,7 @@ export type ServiceRecipientUncheckedUpdateManyWithoutVillageInput = {
   unionId?: Prisma.StringFieldUpdateOperationsInput | string
   donationId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -838,6 +879,7 @@ export type ServiceRecipientSelect<ExtArgs extends runtime.Types.Extensions.Inte
   villageId?: boolean
   donationId?: boolean
   createdAt?: boolean
+  updateAt?: boolean
   union?: boolean | Prisma.UnionDefaultArgs<ExtArgs>
   village?: boolean | Prisma.VillageDefaultArgs<ExtArgs>
   donation?: boolean | Prisma.donationSectionDefaultArgs<ExtArgs>
@@ -853,6 +895,7 @@ export type ServiceRecipientSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   villageId?: boolean
   donationId?: boolean
   createdAt?: boolean
+  updateAt?: boolean
   union?: boolean | Prisma.UnionDefaultArgs<ExtArgs>
   village?: boolean | Prisma.VillageDefaultArgs<ExtArgs>
   donation?: boolean | Prisma.donationSectionDefaultArgs<ExtArgs>
@@ -868,6 +911,7 @@ export type ServiceRecipientSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   villageId?: boolean
   donationId?: boolean
   createdAt?: boolean
+  updateAt?: boolean
   union?: boolean | Prisma.UnionDefaultArgs<ExtArgs>
   village?: boolean | Prisma.VillageDefaultArgs<ExtArgs>
   donation?: boolean | Prisma.donationSectionDefaultArgs<ExtArgs>
@@ -883,9 +927,10 @@ export type ServiceRecipientSelectScalar = {
   villageId?: boolean
   donationId?: boolean
   createdAt?: boolean
+  updateAt?: boolean
 }
 
-export type ServiceRecipientOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "phone" | "nidNumber" | "address" | "unionId" | "villageId" | "donationId" | "createdAt", ExtArgs["result"]["serviceRecipient"]>
+export type ServiceRecipientOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "phone" | "nidNumber" | "address" | "unionId" | "villageId" | "donationId" | "createdAt" | "updateAt", ExtArgs["result"]["serviceRecipient"]>
 export type ServiceRecipientInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   union?: boolean | Prisma.UnionDefaultArgs<ExtArgs>
   village?: boolean | Prisma.VillageDefaultArgs<ExtArgs>
@@ -919,6 +964,7 @@ export type $ServiceRecipientPayload<ExtArgs extends runtime.Types.Extensions.In
     villageId: string
     donationId: string
     createdAt: Date
+    updateAt: Date
   }, ExtArgs["result"]["serviceRecipient"]>
   composites: {}
 }
@@ -1354,6 +1400,7 @@ export interface ServiceRecipientFieldRefs {
   readonly villageId: Prisma.FieldRef<"ServiceRecipient", 'String'>
   readonly donationId: Prisma.FieldRef<"ServiceRecipient", 'String'>
   readonly createdAt: Prisma.FieldRef<"ServiceRecipient", 'DateTime'>
+  readonly updateAt: Prisma.FieldRef<"ServiceRecipient", 'DateTime'>
 }
     
 

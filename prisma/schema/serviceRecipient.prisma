@@ -15,4 +15,5 @@ model ServiceRecipient {
     donation   donationSection @relation(fields: [donationId], references: [id])
 
     createdAt DateTime @default(now())
+    updateAt  DateTime @updatedAt
 }

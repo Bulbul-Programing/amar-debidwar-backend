@@ -1,11 +1,11 @@
-export type Expense = {
+export type TExpense = {
     id: string;
     description: string;
     amount: number;
     expenseDate: Date;
     chalanImage?: string | null;
     projectId: string;
-    category: string;
+    categoryId: string;
     createdAt: Date;
     updatedAt: Date;
 };

@@ -3,7 +3,11 @@ import { userRoutes } from '../modules/User/user.route';
 import { authRouter } from '../modules/Auth/auth.routes';
 import { fundSourceRoutes } from '../modules/FundSource/fundSource.route';
 import { donationSectionRoutes } from '../modules/DonactionSection/donationSection.route';
-import { BudgetRoutes } from '../modules/Project/project.route';
+import { projectRoute } from '../modules/Project/project.route';
+import { BudgetRoutes } from '../modules/Budge/budge.route';
+import { expenseCategoryRoutes } from '../modules/expenseCategory/expenseCategory.route';
+import { expenseRoutes } from '../modules/expence/expense.route';
+import { serviceRecipientRoutes } from '../modules/serviceRecipient/serviceRecipient.route';
 
 type TModuleRoutes = {
     path: string,
@@ -31,11 +35,23 @@ const moduleRoutes: TModuleRoutes[] = [
     },
     {
         path: "/project",
-        route: fundSourceRoutes
+        route: projectRoute
+    },
+    {
+        path: "/expenseCategory",
+        route: expenseCategoryRoutes
+    },
+    {
+        path: "/expense",
+        route: expenseRoutes
     },
     {
         path: "/donationSection",
         route: donationSectionRoutes
+    },
+    {
+        path: "/serviceRecipient",
+        route: serviceRecipientRoutes
     },
 ]
 

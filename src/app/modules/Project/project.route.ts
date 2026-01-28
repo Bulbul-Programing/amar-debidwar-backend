@@ -13,4 +13,4 @@ router.get("/:id", projectController.getProjectById)
 router.patch("/:id", validateUser(UserRole.ADMIN), validateRequest(updateProjectSchema), projectController.updateProject)
 router.delete("/:id", validateUser(UserRole.ADMIN), projectController.deleteProject)
 
-export const BudgetRoutes = router
+export const projectRoute = router

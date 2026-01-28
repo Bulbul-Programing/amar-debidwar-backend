@@ -54,15 +54,15 @@ const updateExpenseCategory = catchAsync(async (req: Request, res: Response) => 
     });
 });
 
-const deleteExpenseCategory = catchAsync(async (req: Request, res: Response) => {
+const blockExpenseCategory = catchAsync(async (req: Request, res: Response) => {
     const id = req.params.id as string
 
-    const result = await expenseCategoryService.deleteExpenseCategory(id);
+    const result = await expenseCategoryService.blockExpenseCategory(id);
 
     sendResponse(res, {
         statusCode: 200,
         success: true,
-        message: "Expense category deleted successfully!",
+        message: "Expense category blocked status update successfully!",
         data: result,
     });
 });
@@ -72,5 +72,5 @@ export const expenseCategoryController = {
     getAllExpenseCategories,
     getExpenseCategoryById,
     updateExpenseCategory,
-    deleteExpenseCategory
+    blockExpenseCategory
 }

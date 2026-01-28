@@ -5,7 +5,6 @@ import { budgetService } from "./budge.service";
 
 const createBudget = catchAsync(async (req: Request, res: Response) => {
     const budgetData = req.body
-
     const result = await budgetService.createBudget(budgetData)
 
     sendResponse(res, {

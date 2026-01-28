@@ -193,7 +193,8 @@ export const ServiceRecipientScalarFieldEnum = {
   unionId: 'unionId',
   villageId: 'villageId',
   donationId: 'donationId',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updateAt: 'updateAt'
 } as const
 
 export type ServiceRecipientScalarFieldEnum = (typeof ServiceRecipientScalarFieldEnum)[keyof typeof ServiceRecipientScalarFieldEnum]

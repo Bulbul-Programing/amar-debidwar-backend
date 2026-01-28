@@ -1,72 +1,64 @@
 import { Request, Response } from "express";
 import catchAsync from "../../utils/catchAsync";
+import { expenseService } from "./expense.service";
 import { sendResponse } from "../../utils/sendResponse";
-import { fundSourceService } from "./expense.service";
 
-const createFundSource = catchAsync(async (req: Request, res: Response) => {
-    const fundData = req.body
-    const result = await fundSourceService.createFundSource(fundData);
-
-    sendResponse(res, {
-        statusCode: 201,
-        success: true,
-        message: "Fund source created successfully!",
-        data: result
-    })
-})
-
-const getAllFundSources = catchAsync(async (req: Request, res: Response) => {
-    const result = await fundSourceService.getAllFundSources();
+// Create Expense
+const createExpense = catchAsync(async (req: Request, res: Response) => {
+    const expenseData = req.body;
+    const result = await expenseService.addExpense(expenseData);
 
     sendResponse(res, {
         statusCode: 201,
         success: true,
-        message: "All fund source retrieve successfully!",
-        data: result
-    })
-})
+        message: "Expense added successfully!",
+        data: result,
+    });
+});
 
-const getFundSourceById = catchAsync(async (req: Request, res: Response) => {
-    const fundSourceId = req.params.id as string
-    const result = await fundSourceService.getFundSourceById(fundSourceId);
-
-    sendResponse(res, {
-        statusCode: 201,
-        success: true,
-        message: "Fund source retrieve successfully!",
-        data: result
-    })
-})
-
-const updateFundSource = catchAsync(async (req: Request, res: Response) => {
-    const fundSourceId = req.params.id as string
-    const updateData = req.body
-    const result = await fundSourceService.updateFundSource(fundSourceId, updateData);
+// Get All Expenses
+const getAllExpense = catchAsync(async (req: Request, res: Response) => {
+    const result = await expenseService.getAllExpense();
 
     sendResponse(res, {
-        statusCode: 201,
+        statusCode: 200,
         success: true,
-        message: "Fund source update successfully!",
-        data: result
-    })
-})
+        message: "Expenses retrieved successfully!",
+        data: result,
+    });
+});
 
-const deleteFundSource = catchAsync(async (req: Request, res: Response) => {
-    const fundSourceId = req.params.id as string
-    const result = await fundSourceService.deleteFundSource(fundSourceId);
+// Get Single Expense
+const getSingleExpense = catchAsync(async (req: Request, res: Response) => {
+    const id = req.params.id as string
+    const result = await expenseService.getSingleExpense(id);
 
     sendResponse(res, {
-        statusCode: 201,
+        statusCode: 200,
         success: true,
-        message: "Fund source delete successfully!",
-        data: result
-    })
-})
+        message: "Expense retrieved successfully!",
+        data: result,
+    });
+});
 
-export const fundSourceController = {
-    createFundSource,
-    getAllFundSources,
-    getFundSourceById,
-    updateFundSource,
-    deleteFundSource
-}
+// Update Expense
+const updateExpense = catchAsync(async (req: Request, res: Response) => {
+    const id = req.params.id as string
+    const updateData = req.body;
+
+    const result = await expenseService.updateExpense(id, updateData);
+
+    sendResponse(res, {
+        statusCode: 200,
+        success: true,
+        message: "Expense updated successfully!",
+        data: result,
+    });
+});
+
+export const expenseController = {
+    createExpense,
+    getAllExpense,
+    getSingleExpense,
+    updateExpense,
+};

@@ -1,77 +1,113 @@
 import { prisma } from "../../DBconfig/db";
 import AppError from "../../error/AppError";
-import { TFundSource } from "./expense.interface";
+import { TExpense } from "./expense.interface";
 
-const createFundSource = async (data: TFundSource) => {
-    return await prisma.fundSource.create({
-        data,
-    });
-};
-
-const getAllFundSources = async () => {
-    return await prisma.fundSource.findMany({
+const addExpense = async (data: TExpense) => {
+    const isExistCategory = await prisma.expenseCategory.findUnique({
         where: {
+            id: data.categoryId,
+            isActive: true
+        }
+    })
+
+    if (!isExistCategory) {
+        throw new AppError(404, "Expense category not found!")
+    }
+
+    const isExistProject = await prisma.project.findUnique({
+        where: {
+            id: data.projectId,
             isDeleted: false
-        },
-        orderBy: {
-            name: "asc",
-        },
+        }
+    })
+
+    if (!isExistProject) {
+        throw new AppError(404, "Project not found!")
+    }
+
+    const result = await prisma.$transaction(async (tnx) => {
+        const expense = await tnx.expense.create({
+            data: data
+        })
+        // update project actual cost
+        const updatedActualCost = await tnx.project.update({
+            where: { id: data.projectId },
+            data: {
+                actualCost: isExistProject.actualCost! + data.amount
+            }
+        })
+        return expense
+    })
+
+    return result
+};
+
+const getAllExpense = async () => {
+    return await prisma.expense.findMany({
+        include: {
+            expenseCategory: true,
+            project: true
+        }
     });
 };
 
-const getFundSourceById = async (id: string) => {
-    const isExistSource = await prisma.fundSource.findUnique({
-        where: { id, isDeleted: false },
-    });
-
-    if (!isExistSource) {
-        throw new AppError(404, "Fund source not found!")
-    }
-
-    return isExistSource
-};
-
-const updateFundSource = async (
-    id: string,
-    data: Partial<TFundSource>
-) => {
-    const isExistSource = await prisma.fundSource.findUnique({
-        where: { id, isDeleted: false },
-    });
-
-    if (!isExistSource) {
-        throw new AppError(404, "Fund source not found!")
-    }
-    const updateFoundSource = await prisma.fundSource.update({
+const getSingleExpense = async (id: string) => {
+    const isExistExpense = await prisma.expense.findUnique({
         where: { id },
-        data,
-    });
-    return updateFoundSource
-};
-
-const deleteFundSource = async (id: string) => {
-    const isExistSource = await prisma.fundSource.findUnique({
-        where: { id, isDeleted: false },
-    });
-
-    if (!isExistSource) {
-        throw new AppError(404, "Fund source not found!")
-    }
-
-    const softDeleteFundSource = await prisma.fundSource.update({
-        where: { id },
-        data: {
-            isDeleted: true
+        include: {
+            expenseCategory: true,
+            project: true
         }
     });
 
-    return null
+    if (!isExistExpense) {
+        throw new AppError(404, "Expense not found!")
+    }
+
+    return isExistExpense
 };
 
-export const fundSourceService = {
-    createFundSource,
-    getAllFundSources,
-    getFundSourceById,
-    updateFundSource,
-    deleteFundSource
+const updateExpense = async (
+    id: string,
+    data: Partial<TExpense>
+) => {
+    const isExistExpense = await prisma.expense.findUnique({
+        where: { id },
+        include: {
+            project: true,
+            expenseCategory: true
+        }
+    });
+
+    if (!isExistExpense) {
+        throw new AppError(404, "Expense not found!")
+    }
+
+    const result = await prisma.$transaction(async (tnx) => {
+        const updateExpense = await prisma.expense.update({
+            where: { id },
+            data,
+        });
+
+        if (data.amount && data.amount !== isExistExpense.amount) {
+            const amountDifference = data.amount - isExistExpense.amount
+
+            // update project actual cost
+            const updatedActualCost = await tnx.project.update({
+                where: { id: isExistExpense.projectId },
+                data: {
+                    actualCost: isExistExpense.project.actualCost! + (amountDifference)
+                }
+            })
+        }
+        return updateExpense
+    })
+    return result
+};
+
+export const expenseService = {
+    addExpense,
+    getAllExpense,
+    getSingleExpense,
+    updateExpense
 }

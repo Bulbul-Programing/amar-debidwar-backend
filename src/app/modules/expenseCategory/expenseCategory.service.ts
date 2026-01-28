@@ -44,9 +44,9 @@ const updateExpenseCategory = async (id: string, data: Partial<TExpenseCategory>
     });
 };
 
-const deleteExpenseCategory = async (id: string) => {
+const blockExpenseCategory = async (id: string) => {
     const isExistExpenseCategory = await prisma.expenseCategory.findUnique({
-        where: { id, isActive: true }
+        where: { id }
     })
 
     if (!isExistExpenseCategory) {
@@ -56,7 +56,7 @@ const deleteExpenseCategory = async (id: string) => {
     return await prisma.expenseCategory.update({
         where: { id },
         data: {
-            isActive: true
+            isActive: !isExistExpenseCategory.isActive
         }
     });
 };
@@ -66,5 +66,5 @@ export const expenseCategoryService = {
     getAllExpenseCategories,
     getExpenseCategoryById,
     updateExpenseCategory,
-    deleteExpenseCategory
+    blockExpenseCategory
 }
