@@ -10,6 +10,8 @@ import { expenseRoutes } from '../modules/expence/expense.route';
 import { serviceRecipientRoutes } from '../modules/serviceRecipient/serviceRecipient.route';
 import { villageRoutes } from '../modules/village/village.route';
 import { unionRoutes } from '../modules/Union/union.route';
+import { complaintCategoryRoutes } from '../modules/ComplainCategory/complainCategory.routes';
+import { complainRoutes } from '../modules/Complain/complain.routes';
 
 type TModuleRoutes = {
     path: string,
@@ -62,6 +64,14 @@ const moduleRoutes: TModuleRoutes[] = [
     {
         path: "/serviceRecipient",
         route: serviceRecipientRoutes
+    },
+    {
+        path: "/complainCategory",
+        route: complaintCategoryRoutes
+    },
+    {
+        path: "/complain",
+        route: complainRoutes
     },
 ]
 

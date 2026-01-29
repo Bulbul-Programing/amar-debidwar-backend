@@ -43,10 +43,10 @@ export { Prisma }
  */
 export type Budget = Prisma.BudgetModel
 /**
- * Model Complaint
+ * Model Complain
  * 
  */
-export type Complaint = Prisma.ComplaintModel
+export type Complain = Prisma.ComplainModel
 /**
  * Model ComplaintCategory
  * 

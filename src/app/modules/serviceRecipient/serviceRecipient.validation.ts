@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { optional, z } from "zod";
 
 const createServiceRecipientSchema = z.object({
     name: z
@@ -59,20 +59,21 @@ const updateServiceRecipientSchema = z.object({
         .string()
         .trim()
         .min(5, "Address must be at least 5 characters long")
-        .max(255, "Address cannot exceed 255 characters"),
+        .max(255, "Address cannot exceed 255 characters")
+        .optional(),
 
     unionId: z
-        .uuid("Union ID must be a valid UUID"),
+        .uuid("Union ID must be a valid UUID")
+        .optional(),
 
     villageId: z
-        .uuid("Village ID must be a valid UUID"),
+        .uuid("Village ID must be a valid UUID")
+        .optional(),
 
     donationId: z
-        .uuid("Donation section ID must be a valid UUID"),
+        .uuid("Donation section ID must be a valid UUID")
+        .optional(),
 })
-    .refine((data) => Object.keys(data).length < 1, {
-        message: "At least one field must be updated"
-    })
 
 export const serviceREcipientSchema = {
     createServiceRecipientSchema,

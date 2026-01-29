@@ -9,7 +9,7 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/Budget'
-export type * from './models/Complaint'
+export type * from './models/Complain'
 export type * from './models/ComplaintCategory'
 export type * from './models/donationSection'
 export type * from './models/FundSource'

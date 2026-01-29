@@ -190,7 +190,7 @@ export type ComplaintCategoryWhereInput = {
   isActive?: Prisma.BoolFilter<"ComplaintCategory"> | boolean
   createdAt?: Prisma.DateTimeFilter<"ComplaintCategory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ComplaintCategory"> | Date | string
-  complaints?: Prisma.ComplaintListRelationFilter
+  complaints?: Prisma.ComplainListRelationFilter
 }
 
 export type ComplaintCategoryOrderByWithRelationInput = {
@@ -200,7 +200,7 @@ export type ComplaintCategoryOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  complaints?: Prisma.ComplaintOrderByRelationAggregateInput
+  complaints?: Prisma.ComplainOrderByRelationAggregateInput
 }
 
 export type ComplaintCategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -213,7 +213,7 @@ export type ComplaintCategoryWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"ComplaintCategory"> | boolean
   createdAt?: Prisma.DateTimeFilter<"ComplaintCategory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ComplaintCategory"> | Date | string
-  complaints?: Prisma.ComplaintListRelationFilter
+  complaints?: Prisma.ComplainListRelationFilter
 }, "id">
 
 export type ComplaintCategoryOrderByWithAggregationInput = {
@@ -247,7 +247,7 @@ export type ComplaintCategoryCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  complaints?: Prisma.ComplaintCreateNestedManyWithoutCategoryInput
+  complaints?: Prisma.ComplainCreateNestedManyWithoutCategoryInput
 }
 
 export type ComplaintCategoryUncheckedCreateInput = {
@@ -257,7 +257,7 @@ export type ComplaintCategoryUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutCategoryInput
+  complaints?: Prisma.ComplainUncheckedCreateNestedManyWithoutCategoryInput
 }
 
 export type ComplaintCategoryUpdateInput = {
@@ -267,7 +267,7 @@ export type ComplaintCategoryUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  complaints?: Prisma.ComplaintUpdateManyWithoutCategoryNestedInput
+  complaints?: Prisma.ComplainUpdateManyWithoutCategoryNestedInput
 }
 
 export type ComplaintCategoryUncheckedUpdateInput = {
@@ -277,7 +277,7 @@ export type ComplaintCategoryUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutCategoryNestedInput
+  complaints?: Prisma.ComplainUncheckedUpdateManyWithoutCategoryNestedInput
 }
 
 export type ComplaintCategoryCreateManyInput = {
@@ -432,7 +432,7 @@ export type ComplaintCategoryCountOutputTypeDefaultArgs<ExtArgs extends runtime.
  * ComplaintCategoryCountOutputType without action
  */
 export type ComplaintCategoryCountOutputTypeCountComplaintsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ComplaintWhereInput
+  where?: Prisma.ComplainWhereInput
 }
 
 
@@ -485,7 +485,7 @@ export type ComplaintCategoryIncludeUpdateManyAndReturn<ExtArgs extends runtime.
 export type $ComplaintCategoryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ComplaintCategory"
   objects: {
-    complaints: Prisma.$ComplaintPayload<ExtArgs>[]
+    complaints: Prisma.$ComplainPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -888,7 +888,7 @@ readonly fields: ComplaintCategoryFieldRefs;
  */
 export interface Prisma__ComplaintCategoryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  complaints<T extends Prisma.ComplaintCategory$complaintsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ComplaintCategory$complaintsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  complaints<T extends Prisma.ComplaintCategory$complaintsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ComplaintCategory$complaintsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplainPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1316,23 +1316,23 @@ export type ComplaintCategoryDeleteManyArgs<ExtArgs extends runtime.Types.Extens
  */
 export type ComplaintCategory$complaintsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Complaint
+   * Select specific fields to fetch from the Complain
    */
-  select?: Prisma.ComplaintSelect<ExtArgs> | null
+  select?: Prisma.ComplainSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Complaint
+   * Omit specific fields from the Complain
    */
-  omit?: Prisma.ComplaintOmit<ExtArgs> | null
+  omit?: Prisma.ComplainOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ComplaintInclude<ExtArgs> | null
-  where?: Prisma.ComplaintWhereInput
-  orderBy?: Prisma.ComplaintOrderByWithRelationInput | Prisma.ComplaintOrderByWithRelationInput[]
-  cursor?: Prisma.ComplaintWhereUniqueInput
+  include?: Prisma.ComplainInclude<ExtArgs> | null
+  where?: Prisma.ComplainWhereInput
+  orderBy?: Prisma.ComplainOrderByWithRelationInput | Prisma.ComplainOrderByWithRelationInput[]
+  cursor?: Prisma.ComplainWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.ComplaintScalarFieldEnum | Prisma.ComplaintScalarFieldEnum[]
+  distinct?: Prisma.ComplainScalarFieldEnum | Prisma.ComplainScalarFieldEnum[]
 }
 
 /**

@@ -52,7 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Budget: 'Budget',
-  Complaint: 'Complaint',
+  Complain: 'Complain',
   ComplaintCategory: 'ComplaintCategory',
   donationSection: 'donationSection',
   FundSource: 'FundSource',
@@ -97,7 +97,7 @@ export const BudgetScalarFieldEnum = {
 export type BudgetScalarFieldEnum = (typeof BudgetScalarFieldEnum)[keyof typeof BudgetScalarFieldEnum]
 
 
-export const ComplaintScalarFieldEnum = {
+export const ComplainScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
@@ -108,7 +108,7 @@ export const ComplaintScalarFieldEnum = {
   updateAt: 'updateAt'
 } as const
 
-export type ComplaintScalarFieldEnum = (typeof ComplaintScalarFieldEnum)[keyof typeof ComplaintScalarFieldEnum]
+export type ComplainScalarFieldEnum = (typeof ComplainScalarFieldEnum)[keyof typeof ComplainScalarFieldEnum]
 
 
 export const ComplaintCategoryScalarFieldEnum = {

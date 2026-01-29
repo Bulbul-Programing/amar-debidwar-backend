@@ -16,13 +16,11 @@ router.post(
 
 router.get(
     "/",
-    validateUser(UserRole.ADMIN),
     UnionController.getAllUnions
 );
 
 router.get(
     "/:id",
-    validateUser(UserRole.ADMIN),
     UnionController.getSingleUnion
 );
 

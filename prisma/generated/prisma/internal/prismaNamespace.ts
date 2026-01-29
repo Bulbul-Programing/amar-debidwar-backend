@@ -385,7 +385,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Budget: 'Budget',
-  Complaint: 'Complaint',
+  Complain: 'Complain',
   ComplaintCategory: 'ComplaintCategory',
   donationSection: 'donationSection',
   FundSource: 'FundSource',
@@ -411,7 +411,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "budget" | "complaint" | "complaintCategory" | "donationSection" | "fundSource" | "project" | "expense" | "expenseCategory" | "serviceRecipient" | "union" | "village" | "user"
+    modelProps: "budget" | "complain" | "complaintCategory" | "donationSection" | "fundSource" | "project" | "expense" | "expenseCategory" | "serviceRecipient" | "union" | "village" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -489,77 +489,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Complaint: {
-      payload: Prisma.$ComplaintPayload<ExtArgs>
-      fields: Prisma.ComplaintFieldRefs
+    Complain: {
+      payload: Prisma.$ComplainPayload<ExtArgs>
+      fields: Prisma.ComplainFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.ComplaintFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintPayload> | null
+          args: Prisma.ComplainFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplainPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.ComplaintFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintPayload>
+          args: Prisma.ComplainFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplainPayload>
         }
         findFirst: {
-          args: Prisma.ComplaintFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintPayload> | null
+          args: Prisma.ComplainFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplainPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.ComplaintFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintPayload>
+          args: Prisma.ComplainFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplainPayload>
         }
         findMany: {
-          args: Prisma.ComplaintFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintPayload>[]
+          args: Prisma.ComplainFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplainPayload>[]
         }
         create: {
-          args: Prisma.ComplaintCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintPayload>
+          args: Prisma.ComplainCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplainPayload>
         }
         createMany: {
-          args: Prisma.ComplaintCreateManyArgs<ExtArgs>
+          args: Prisma.ComplainCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.ComplaintCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintPayload>[]
+          args: Prisma.ComplainCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplainPayload>[]
         }
         delete: {
-          args: Prisma.ComplaintDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintPayload>
+          args: Prisma.ComplainDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplainPayload>
         }
         update: {
-          args: Prisma.ComplaintUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintPayload>
+          args: Prisma.ComplainUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplainPayload>
         }
         deleteMany: {
-          args: Prisma.ComplaintDeleteManyArgs<ExtArgs>
+          args: Prisma.ComplainDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.ComplaintUpdateManyArgs<ExtArgs>
+          args: Prisma.ComplainUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.ComplaintUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintPayload>[]
+          args: Prisma.ComplainUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplainPayload>[]
         }
         upsert: {
-          args: Prisma.ComplaintUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintPayload>
+          args: Prisma.ComplainUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplainPayload>
         }
         aggregate: {
-          args: Prisma.ComplaintAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateComplaint>
+          args: Prisma.ComplainAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateComplain>
         }
         groupBy: {
-          args: Prisma.ComplaintGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ComplaintGroupByOutputType>[]
+          args: Prisma.ComplainGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ComplainGroupByOutputType>[]
         }
         count: {
-          args: Prisma.ComplaintCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ComplaintCountAggregateOutputType> | number
+          args: Prisma.ComplainCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ComplainCountAggregateOutputType> | number
         }
       }
     }
@@ -1358,7 +1358,7 @@ export const BudgetScalarFieldEnum = {
 export type BudgetScalarFieldEnum = (typeof BudgetScalarFieldEnum)[keyof typeof BudgetScalarFieldEnum]
 
 
-export const ComplaintScalarFieldEnum = {
+export const ComplainScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
@@ -1369,7 +1369,7 @@ export const ComplaintScalarFieldEnum = {
   updateAt: 'updateAt'
 } as const
 
-export type ComplaintScalarFieldEnum = (typeof ComplaintScalarFieldEnum)[keyof typeof ComplaintScalarFieldEnum]
+export type ComplainScalarFieldEnum = (typeof ComplainScalarFieldEnum)[keyof typeof ComplainScalarFieldEnum]
 
 
 export const ComplaintCategoryScalarFieldEnum = {
@@ -1700,7 +1700,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   budget?: Prisma.BudgetOmit
-  complaint?: Prisma.ComplaintOmit
+  complain?: Prisma.ComplainOmit
   complaintCategory?: Prisma.ComplaintCategoryOmit
   donationSection?: Prisma.donationSectionOmit
   fundSource?: Prisma.FundSourceOmit
