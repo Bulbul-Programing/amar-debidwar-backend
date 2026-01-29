@@ -15,8 +15,8 @@ const createServiceRecipient = catchAsync(async (req: Request, res: Response) =>
     });
 });
 
-const getAllServiceRecipients = catchAsync(async (_req: Request, res: Response) => {
-    const result = await serviceRecipientService.getAllServiceRecipients();
+const getAllServiceRecipients = catchAsync(async (req: Request, res: Response) => {
+    const result = await serviceRecipientService.getAllServiceRecipients(req.query);
 
     sendResponse(res, {
         statusCode: 200,

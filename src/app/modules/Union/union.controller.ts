@@ -14,8 +14,8 @@ const createUnion = catchAsync(async (req: Request, res: Response) => {
     });
 });
 
-const getAllUnions = catchAsync(async (_req: Request, res: Response) => {
-    const result = await fundSourceService.getAllUnions();
+const getAllUnions = catchAsync(async (req: Request, res: Response) => {
+    const result = await fundSourceService.getAllUnions(req.query);
 
     sendResponse(res, {
         statusCode: 200,

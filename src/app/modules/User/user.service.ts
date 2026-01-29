@@ -4,6 +4,8 @@ import AppError from "../../error/AppError";
 import { generateSlug } from "../../utils/generateSlug";
 import bcrypt from 'bcryptjs';
 import { TUpdateUser, TUser, UserRole } from "./user.interface";
+import { paginateCalculation } from "../../utils/paginateCalculation";
+import QueryBuilder from "../../builder/QueryBuilder";
 
 const createUser = async (payload: TUser) => {
     const isExistUser = await prisma.user.findUnique({
@@ -48,14 +50,35 @@ const crateAdmin = async (payload: TUser) => {
     return createUser
 }
 
-const getAllUsers = async () => {
-    const users = await prisma.user.findMany({
-        omit: {
-            password: true
-        }
+const getAllUsers = async (options: any) => {
+    const { page, limit, skip } = paginateCalculation(options)
+
+    const usersQueryBuilder = new QueryBuilder(options)
+        .searching(["name", "email", "phone"])
+        .sort()
+        .fields()
+        .paginate()
+
+    const result = await prisma.user.findMany({
+        ...usersQueryBuilder.prismaQuery
     })
 
-    return users
+    const total = await prisma.user.count({
+        where: usersQueryBuilder.prismaQuery.where
+    })
+
+    const returnData = {
+        meta: {
+            page: Number(page),
+            limit: Number(limit),
+            totalPage: Math.ceil(total / Number(limit)),
+            total: total,
+            skip: Number(skip)
+        },
+        data: result
+    }
+
+    return returnData
 }
 
 const getSingleUser = async (userId: string) => {

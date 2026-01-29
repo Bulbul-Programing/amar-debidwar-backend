@@ -1,6 +1,8 @@
 
+import QueryBuilder from "../../builder/QueryBuilder";
 import { prisma } from "../../DBconfig/db";
 import AppError from "../../error/AppError";
+import { paginateCalculation } from "../../utils/paginateCalculation";
 import { TVillage } from "./village.interface";
 
 const createVillage = async (data: TVillage) => {
@@ -17,12 +19,39 @@ const createVillage = async (data: TVillage) => {
     });
 };
 
-const getAllVillages = async () => {
-    return await prisma.village.findMany({
-        orderBy: {
-            name: "asc",
+const getAllVillages = async (options: any) => {
+    const { page, limit, skip } = paginateCalculation(options)
+
+    const villagesQueryBuilder = new QueryBuilder(options)
+        .searching(["name"])
+        .sort()
+        .fields()
+        .paginate()
+
+    delete villagesQueryBuilder.prismaQuery.where.isActive
+    delete villagesQueryBuilder.prismaQuery.where.isDeleted
+    delete villagesQueryBuilder.prismaQuery.orderBy.createdAt
+
+    const result = await prisma.village.findMany({
+        ...villagesQueryBuilder.prismaQuery
+    })
+
+    const total = await prisma.village.count({
+        where: villagesQueryBuilder.prismaQuery.where
+    })
+
+    const returnData = {
+        meta: {
+            page: Number(page),
+            limit: Number(limit),
+            totalPage: Math.ceil(total / Number(limit)),
+            total: total,
+            skip: Number(skip)
         },
-    });
+        data: result
+    }
+
+    return returnData
 };
 
 const getSingleVillage = async (id: string) => {

@@ -1,5 +1,7 @@
+import QueryBuilder from "../../builder/QueryBuilder";
 import { prisma } from "../../DBconfig/db";
 import AppError from "../../error/AppError";
+import { paginateCalculation } from "../../utils/paginateCalculation";
 import { TUnion } from "./union.interface";
 
 const createUnion = async (data: TUnion) => {
@@ -16,12 +18,38 @@ const createUnion = async (data: TUnion) => {
     });
 };
 
-const getAllUnions = async () => {
-    return await prisma.union.findMany({
-        orderBy: {
-            name: "asc",
+const getAllUnions = async (options: any) => {
+    const { page, limit, skip } = paginateCalculation(options)
+    const unionsQueryBuilder = new QueryBuilder(options)
+        .searching(["name"])
+        .sort()
+        .fields()
+        .paginate()
+
+    delete unionsQueryBuilder.prismaQuery.where.isActive
+    delete unionsQueryBuilder.prismaQuery.where.isDeleted
+    delete unionsQueryBuilder.prismaQuery.orderBy.createdAt
+
+    const result = await prisma.union.findMany({
+        ...unionsQueryBuilder.prismaQuery
+    })
+
+    const total = await prisma.union.count({
+        where: unionsQueryBuilder.prismaQuery.where
+    })
+
+    const returnData = {
+        meta: {
+            page: Number(page),
+            limit: Number(limit),
+            totalPage: Math.ceil(total / Number(limit)),
+            total: total,
+            skip: Number(skip)
         },
-    });
+        data: result
+    }
+
+    return returnData
 };
 
 const getSingleUnion = async (id: string) => {

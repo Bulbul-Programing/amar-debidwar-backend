@@ -16,8 +16,8 @@ const createVillage = catchAsync(async (req: Request, res: Response) => {
     });
 });
 
-const getAllVillages = catchAsync(async (_req: Request, res: Response) => {
-    const result = await fundSourceService.getAllVillages();
+const getAllVillages = catchAsync(async (req: Request, res: Response) => {
+    const result = await fundSourceService.getAllVillages(req.query);
 
     sendResponse(res, {
         statusCode: 200,

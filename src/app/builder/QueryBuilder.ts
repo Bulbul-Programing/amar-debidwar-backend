@@ -16,16 +16,48 @@ class QueryBuilder<T> {
     }
 
     searching(searchableFields: string[]) {
-        const searchTerm = this.query.searchTerm as string;
-        if (searchTerm) {
-            this.prismaQuery.where = {
-                ...this.prismaQuery.where,
-                OR: searchableFields.map((field) => ({
-                    [field]: { contains: searchTerm, mode: 'insensitive', }
-                })),
+        const searchTerm = this.query.searchTerm as string
+        if (!searchTerm) return this
+
+        const orConditions = searchableFields.map((field) => {
+            if (field.includes('.')) {
+                const [relation, relationField] = field.split('.')
+                return {
+                    [relation]: {
+                        [relationField]: { contains: searchTerm, mode: "insensitive" }
+                    }
+                }
+
+            }
+
+            return {
+                [field]: {
+                    contains: searchTerm,
+                    mode: 'insensitive',
+                },
             };
-        } return this;
+        })
+
+        this.prismaQuery.where = {
+            ...this.prismaQuery.where,
+            OR: orConditions,
+        };
+
+        return this;
+
     }
+
+    // searching(searchableFields: string[]) {
+    //     const searchTerm = this.query.searchTerm as string;
+    //     if (searchTerm) {
+    //         this.prismaQuery.where = {
+    //             ...this.prismaQuery.where,
+    //             OR: searchableFields.map((field) => ({
+    //                 [field]: { contains: searchTerm, mode: 'insensitive', }
+    //             })),
+    //         };
+    //     } return this;
+    // }
 
     category() {
         if (this.query.category) {

@@ -1,5 +1,7 @@
+import QueryBuilder from "../../builder/QueryBuilder";
 import { prisma } from "../../DBconfig/db";
 import AppError from "../../error/AppError";
+import { paginateCalculation } from "../../utils/paginateCalculation";
 import { TServiceRecipient } from "./serviceRecipient.interface";
 
 const createServiceRecipient = async (data: TServiceRecipient) => {
@@ -18,11 +20,40 @@ const createServiceRecipient = async (data: TServiceRecipient) => {
     });
 };
 
-const getAllServiceRecipients = async () => {
-    return await prisma.serviceRecipient.findMany({
-        include: { union: true, village: true, donation: true },
-        orderBy: { createdAt: "desc" },
-    });
+const getAllServiceRecipients = async (options: any) => {
+    const { page, limit, skip } = paginateCalculation(options)
+
+    const serviceRecipientQueryBuilder = new QueryBuilder(options)
+        .searching(["name", "phone", "nidNumber", "address", "village.name", "union.name"])
+        .sort()
+        .fields()
+        .paginate()
+
+    delete serviceRecipientQueryBuilder.prismaQuery.where.isActive
+    delete serviceRecipientQueryBuilder.prismaQuery.where.isDeleted
+    delete serviceRecipientQueryBuilder.prismaQuery.orderBy.createdAt
+
+    const result = await prisma.serviceRecipient.findMany({
+        ...serviceRecipientQueryBuilder.prismaQuery,
+        include: { union: true, village: true, donation: true }
+    })
+
+    const total = await prisma.serviceRecipient.count({
+        where: serviceRecipientQueryBuilder.prismaQuery.where
+    })
+
+    const returnData = {
+        meta: {
+            page: Number(page),
+            limit: Number(limit),
+            totalPage: Math.ceil(total / Number(limit)),
+            total: total,
+            skip: Number(skip)
+        },
+        data: result
+    }
+
+    return returnData
 };
 
 const getServiceRecipientById = async (id: string) => {
