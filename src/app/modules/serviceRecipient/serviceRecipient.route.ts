@@ -8,8 +8,8 @@ import { serviceREcipientSchema } from './serviceRecipient.validation';
 const router = express.Router();
 
 router.post('/', validateUser(UserRole.ADMIN), validateRequest(serviceREcipientSchema.createServiceRecipientSchema), serviceRecipientController.createServiceRecipient);
-router.get('/', validateUser(UserRole.ADMIN), serviceRecipientController.getAllServiceRecipients);
-router.get('/:id', validateUser(UserRole.ADMIN), serviceRecipientController.getServiceRecipientById);
+router.get('/', serviceRecipientController.getAllServiceRecipients);
+router.get('/:id',serviceRecipientController.getServiceRecipientById);
 router.patch('/:id', validateUser(UserRole.ADMIN), validateRequest(serviceREcipientSchema.updateServiceRecipientSchema), serviceRecipientController.updateServiceRecipient);
 router.delete('/:id', validateUser(UserRole.ADMIN), serviceRecipientController.deleteServiceRecipient);
 

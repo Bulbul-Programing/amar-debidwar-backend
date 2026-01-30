@@ -9,7 +9,6 @@ const router = express.Router();
 
 router.post(
     "/",
-    validateUser(UserRole.ADMIN),
     validateRequest(createComplainSchema),
     complainController.createComplain
 );
