@@ -37,7 +37,7 @@ class QueryBuilder<T> {
                 },
             };
         })
-
+        console.log(orConditions[5]);
         this.prismaQuery.where = {
             ...this.prismaQuery.where,
             OR: orConditions,
@@ -46,18 +46,6 @@ class QueryBuilder<T> {
         return this;
 
     }
-
-    // searching(searchableFields: string[]) {
-    //     const searchTerm = this.query.searchTerm as string;
-    //     if (searchTerm) {
-    //         this.prismaQuery.where = {
-    //             ...this.prismaQuery.where,
-    //             OR: searchableFields.map((field) => ({
-    //                 [field]: { contains: searchTerm, mode: 'insensitive', }
-    //             })),
-    //         };
-    //     } return this;
-    // }
 
     category() {
         if (this.query.category) {
