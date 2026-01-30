@@ -1,5 +1,7 @@
+import QueryBuilder from "../../builder/QueryBuilder";
 import { prisma } from "../../DBconfig/db";
 import AppError from "../../error/AppError";
+import { paginateCalculation } from "../../utils/paginateCalculation";
 import { TFundSource } from "./fundSource.interface";
 
 const createFundSource = async (data: TFundSource) => {
@@ -8,15 +10,37 @@ const createFundSource = async (data: TFundSource) => {
     });
 };
 
-const getAllFundSources = async () => {
-    return await prisma.fundSource.findMany({
-        where: {
-            isDeleted: false
+const getAllFundSources = async (options: any) => {
+    const { page, limit, skip } = paginateCalculation(options)
+
+    const fundSourceQueryBuilder = new QueryBuilder(options)
+        .searching(["name", "ministry"])
+        .sort()
+        .paginate()
+
+    delete fundSourceQueryBuilder.prismaQuery.where.isActive
+    delete fundSourceQueryBuilder.prismaQuery.orderBy.createdAt
+
+    const result = await prisma.fundSource.findMany({
+        ...fundSourceQueryBuilder.prismaQuery
+    })
+
+    const total = await prisma.fundSource.count({
+        where: fundSourceQueryBuilder.prismaQuery.where
+    })
+
+    const returnData = {
+        meta: {
+            page: Number(page),
+            limit: Number(limit),
+            totalPage: Math.ceil(total / Number(limit)),
+            total: total,
+            skip: Number(skip)
         },
-        orderBy: {
-            name: "asc",
-        },
-    });
+        data: result
+    }
+
+    return returnData
 };
 
 const getFundSourceById = async (id: string) => {

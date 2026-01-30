@@ -16,7 +16,7 @@ const createDonationSection = catchAsync(async (req: Request, res: Response) => 
 })
 
 const getAllDonationSection = catchAsync(async (req: Request, res: Response) => {
-    const result = await donationService.getAllDonationSection();
+    const result = await donationService.getAllDonationSection(req.query);
 
     sendResponse(res, {
         statusCode: 201,

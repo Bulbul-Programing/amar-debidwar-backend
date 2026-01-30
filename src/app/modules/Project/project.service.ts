@@ -1,5 +1,7 @@
+import QueryBuilder from "../../builder/QueryBuilder";
 import { prisma } from "../../DBconfig/db";
 import AppError from "../../error/AppError";
+import { paginateCalculation } from "../../utils/paginateCalculation";
 import { TProject } from "./project.interface";
 
 const createProject = async (data: TProject) => {
@@ -17,18 +19,44 @@ const createProject = async (data: TProject) => {
     return result
 };
 
-const getAllProjects = async () => {
-    return await prisma.project.findMany({
-        where: { isDeleted: false },
+const getAllProjects = async (options: any) => {
+    const { page, limit, skip } = paginateCalculation(options)
+
+    const projectQueryBuilder = new QueryBuilder(options)
+        .searching(["title", "description", "location"])
+        .sort()
+        .paginate()
+
+    delete projectQueryBuilder.prismaQuery.where.isActive
+    delete projectQueryBuilder.prismaQuery.orderBy.createdAt
+
+    const result = await prisma.project.findMany({
+        ...projectQueryBuilder.prismaQuery,
         include: {
             budget: {
                 include: {
                     fundSource: true
                 }
             }
+        }
+    })
+
+    const total = await prisma.project.count({
+        where: projectQueryBuilder.prismaQuery.where
+    })
+
+    const returnData = {
+        meta: {
+            page: Number(page),
+            limit: Number(limit),
+            totalPage: Math.ceil(total / Number(limit)),
+            total: total,
+            skip: Number(skip)
         },
-        orderBy: { title: "asc" },
-    });
+        data: result
+    }
+
+    return returnData
 };
 
 const getProjectById = async (id: string) => {

@@ -14,8 +14,8 @@ const createComplain = catchAsync(async (req: Request, res: Response) => {
     });
 });
 
-const getAllComplains = catchAsync(async (_req: Request, res: Response) => {
-    const result = await complainService.getAllComplains();
+const getAllComplains = catchAsync(async (req: Request, res: Response) => {
+    const result = await complainService.getAllComplains(req.query);
 
     sendResponse(res, {
         statusCode: 200,

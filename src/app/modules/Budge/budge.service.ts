@@ -1,5 +1,7 @@
+import QueryBuilder from "../../builder/QueryBuilder";
 import { prisma } from "../../DBconfig/db";
 import AppError from "../../error/AppError";
+import { paginateCalculation } from "../../utils/paginateCalculation";
 import { TBudget } from "./budge.interface";
 
 const createBudget = async (payload: TBudget) => {
@@ -18,18 +20,42 @@ const createBudget = async (payload: TBudget) => {
     return result
 }
 
-const getAllBudgets = async () => {
+const getAllBudgets = async (options: any) => {
+    const { page, limit, skip } = paginateCalculation(options)
+
+    const budgeQueryBuilder = new QueryBuilder(options)
+        .searching(["title"])
+        .sort()
+        .paginate()
+
+    delete budgeQueryBuilder.prismaQuery.where.isActive
+    delete budgeQueryBuilder.prismaQuery.where.isDeleted
+    delete budgeQueryBuilder.prismaQuery.orderBy.createdAt
+
     const result = await prisma.budget.findMany({
+        ...budgeQueryBuilder.prismaQuery,
         include: {
             fundSource: true,
             projects: true
-        },
-        orderBy: {
-            createdAt: "desc"
         }
     })
 
-    return result
+    const total = await prisma.budget.count({
+        where: budgeQueryBuilder.prismaQuery.where
+    })
+
+    const returnData = {
+        meta: {
+            page: Number(page),
+            limit: Number(limit),
+            totalPage: Math.ceil(total / Number(limit)),
+            total: total,
+            skip: Number(skip)
+        },
+        data: result
+    }
+
+    return returnData
 }
 
 const getSingleBudget = async (id: string) => {

@@ -1,5 +1,7 @@
+import QueryBuilder from "../../builder/QueryBuilder";
 import { prisma } from "../../DBconfig/db";
 import AppError from "../../error/AppError";
+import { paginateCalculation } from "../../utils/paginateCalculation";
 import { TExpense } from "./expense.interface";
 
 const addExpense = async (data: TExpense) => {
@@ -42,13 +44,42 @@ const addExpense = async (data: TExpense) => {
     return result
 };
 
-const getAllExpense = async () => {
-    return await prisma.expense.findMany({
+const getAllExpense = async (options: any) => {
+    const { page, limit, skip } = paginateCalculation(options)
+
+    const expenseQueryBuilder = new QueryBuilder(options)
+        .searching(["description", "expenseCategory.name"])
+        .sort()
+        .paginate()
+
+    delete expenseQueryBuilder.prismaQuery.where.isActive
+    delete expenseQueryBuilder.prismaQuery.where.isDeleted
+    delete expenseQueryBuilder.prismaQuery.orderBy.createdAt
+
+    const result = await prisma.expense.findMany({
+        ...expenseQueryBuilder.prismaQuery,
         include: {
             expenseCategory: true,
             project: true
         }
-    });
+    })
+
+    const total = await prisma.expense.count({
+        where: expenseQueryBuilder.prismaQuery.where
+    })
+
+    const returnData = {
+        meta: {
+            page: Number(page),
+            limit: Number(limit),
+            totalPage: Math.ceil(total / Number(limit)),
+            total: total,
+            skip: Number(skip)
+        },
+        data: result
+    }
+
+    return returnData
 };
 
 const getSingleExpense = async (id: string) => {

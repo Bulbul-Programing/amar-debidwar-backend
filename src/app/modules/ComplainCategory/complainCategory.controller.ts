@@ -14,8 +14,8 @@ const createComplaintCategory = catchAsync(async (req: Request, res: Response) =
     });
 });
 
-const getAllComplaintCategories = catchAsync(async (_req: Request, res: Response) => {
-    const result = await complaintCategoryService.getAllComplaintCategories();
+const getAllComplaintCategories = catchAsync(async (req: Request, res: Response) => {
+    const result = await complaintCategoryService.getAllComplaintCategories(req.query);
 
     sendResponse(res, {
         statusCode: 200,

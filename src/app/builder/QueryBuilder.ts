@@ -17,6 +17,7 @@ class QueryBuilder<T> {
 
     searching(searchableFields: string[]) {
         const searchTerm = this.query.searchTerm as string
+        
         if (!searchTerm) return this
 
         const orConditions = searchableFields.map((field) => {
@@ -37,7 +38,7 @@ class QueryBuilder<T> {
                 },
             };
         })
-        console.log(orConditions[5]);
+        
         this.prismaQuery.where = {
             ...this.prismaQuery.where,
             OR: orConditions,
@@ -136,6 +137,7 @@ class QueryBuilder<T> {
                     return acc;
                 }, {} as Record<string, boolean>);
         }
+        
         return this;
     }
 

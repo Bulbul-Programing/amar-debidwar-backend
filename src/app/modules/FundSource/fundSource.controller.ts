@@ -16,7 +16,7 @@ const createFundSource = catchAsync(async (req: Request, res: Response) => {
 })
 
 const getAllFundSources = catchAsync(async (req: Request, res: Response) => {
-    const result = await fundSourceService.getAllFundSources();
+    const result = await fundSourceService.getAllFundSources(req.query);
 
     sendResponse(res, {
         statusCode: 201,

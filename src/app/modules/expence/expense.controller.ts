@@ -18,7 +18,7 @@ const createExpense = catchAsync(async (req: Request, res: Response) => {
 
 // Get All Expenses
 const getAllExpense = catchAsync(async (req: Request, res: Response) => {
-    const result = await expenseService.getAllExpense();
+    const result = await expenseService.getAllExpense(req.query);
 
     sendResponse(res, {
         statusCode: 200,

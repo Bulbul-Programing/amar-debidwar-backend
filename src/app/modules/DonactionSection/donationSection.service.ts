@@ -1,5 +1,7 @@
+import QueryBuilder from "../../builder/QueryBuilder";
 import { prisma } from "../../DBconfig/db";
 import AppError from "../../error/AppError";
+import { paginateCalculation } from "../../utils/paginateCalculation";
 import { TDonationSection } from "./donationSection.interface";
 
 const createDonationSection = async (data: TDonationSection) => {
@@ -8,15 +10,38 @@ const createDonationSection = async (data: TDonationSection) => {
     });
 };
 
-const getAllDonationSection = async () => {
-    return await prisma.donationSection.findMany({
-        where: {
-            isDeleted: false
+const getAllDonationSection = async (options: any) => {
+    const { page, limit, skip } = paginateCalculation(options)
+
+    const donationSectionQueryBuilder = new QueryBuilder(options)
+        .searching(["title"])
+        .sort()
+        .paginate()
+
+    delete donationSectionQueryBuilder.prismaQuery.where.isActive
+    delete donationSectionQueryBuilder.prismaQuery.where.isDeleted
+    delete donationSectionQueryBuilder.prismaQuery.orderBy.createdAt
+
+    const result = await prisma.donationSection.findMany({
+        ...donationSectionQueryBuilder.prismaQuery
+    })
+
+    const total = await prisma.donationSection.count({
+        where: donationSectionQueryBuilder.prismaQuery.where
+    })
+
+    const returnData = {
+        meta: {
+            page: Number(page),
+            limit: Number(limit),
+            totalPage: Math.ceil(total / Number(limit)),
+            total: total,
+            skip: Number(skip)
         },
-        orderBy: {
-            title: "asc",
-        },
-    });
+        data: result
+    }
+
+    return returnData
 };
 
 const getSingleDonationSection = async (id: string) => {

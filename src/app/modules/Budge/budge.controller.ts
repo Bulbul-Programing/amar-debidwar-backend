@@ -17,7 +17,7 @@ const createBudget = catchAsync(async (req: Request, res: Response) => {
 
 
 const getAllBudgets = catchAsync(async (req: Request, res: Response) => {
-    const result = await budgetService.getAllBudgets()
+    const result = await budgetService.getAllBudgets(req.query)
 
     sendResponse(res, {
         statusCode: 200,

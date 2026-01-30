@@ -16,8 +16,8 @@ const createExpenseCategory = catchAsync(async (req: Request, res: Response) => 
     });
 });
 
-const getAllExpenseCategories = catchAsync(async (_req: Request, res: Response) => {
-    const result = await expenseCategoryService.getAllExpenseCategories();
+const getAllExpenseCategories = catchAsync(async (req: Request, res: Response) => {
+    const result = await expenseCategoryService.getAllExpenseCategories(req.query);
 
     sendResponse(res, {
         statusCode: 200,

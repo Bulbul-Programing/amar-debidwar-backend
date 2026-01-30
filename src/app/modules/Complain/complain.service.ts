@@ -1,5 +1,7 @@
+import QueryBuilder from "../../builder/QueryBuilder";
 import { prisma } from "../../DBconfig/db";
 import AppError from "../../error/AppError";
+import { paginateCalculation } from "../../utils/paginateCalculation";
 import { TComplain } from "./complain.interface";
 
 const createComplain = async (data: TComplain) => {
@@ -11,15 +13,42 @@ const createComplain = async (data: TComplain) => {
     });
 };
 
-const getAllComplains = async () => {
-    return await prisma.complain.findMany({
+const getAllComplains = async (options: any) => {
+    const { page, limit, skip } = paginateCalculation(options)
+
+    const complainQueryBuilder = new QueryBuilder(options)
+        .searching(["title", "description", "location", "category.name"])
+        .sort()
+        .fields()
+        .paginate()
+
+    delete complainQueryBuilder.prismaQuery.where.isActive
+    delete complainQueryBuilder.prismaQuery.where.isDeleted
+    delete complainQueryBuilder.prismaQuery.orderBy.createdAt
+
+    const result = await prisma.complain.findMany({
+        ...complainQueryBuilder.prismaQuery,
         include: {
             category: true,
+        }
+    })
+
+    const total = await prisma.complain.count({
+        where: complainQueryBuilder.prismaQuery.where
+    })
+
+    const returnData = {
+        meta: {
+            page: Number(page),
+            limit: Number(limit),
+            totalPage: Math.ceil(total / Number(limit)),
+            total: total,
+            skip: Number(skip)
         },
-        orderBy: {
-            createdAt: "desc",
-        },
-    });
+        data: result
+    }
+
+    return returnData
 };
 
 const getSingleComplain = async (id: string) => {
