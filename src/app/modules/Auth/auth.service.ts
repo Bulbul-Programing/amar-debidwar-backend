@@ -37,6 +37,21 @@ const loginUser = async (payload: { email: string, password: string }) => {
     }
 }
 
+const getMe = async (email: string) => {
+    const isUserExist = await prisma.user.findUnique({
+        where: { email }
+    })
+
+    if (!isUserExist) {
+        throw new AppError(404, "User not found")
+    }
+
+    const { password, ...rest } = isUserExist
+
+    return rest
+}
+
 export const authService = {
-    loginUser
+    loginUser,
+    getMe
 }

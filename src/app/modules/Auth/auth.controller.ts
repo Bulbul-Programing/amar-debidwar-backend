@@ -18,6 +18,18 @@ const loginUser = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
+const getMe = catchAsync(async (req: Request, res: Response) => {
+    const { email } = req.user
+    const result = await authService.getMe(email);
+
+    sendResponse(res, {
+        statusCode: 201,
+        success: true,
+        message: "User information retrieved successfully!",
+        data: result
+    })
+})
+
 const logout = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
 
     res.clearCookie("accessToken", {
@@ -41,5 +53,6 @@ const logout = catchAsync(async (req: Request, res: Response, next: NextFunction
 
 export const authController = {
     loginUser,
-    logout
+    logout,
+    getMe
 }
