@@ -59,6 +59,8 @@ const getAllUsers = async (options: any) => {
         .fields()
         .paginate()
 
+    delete usersQueryBuilder.prismaQuery.where.isActive
+
     const result = await prisma.user.findMany({
         ...usersQueryBuilder.prismaQuery
     })
@@ -177,10 +179,13 @@ const blockedUser = async (userId: string) => {
     const blockedUser = await prisma.user.update({
         where: { id: userId },
         data: {
-            isActive: false
+            isActive: !isExistUser.isActive
         }
     })
-    return blockedUser
+
+    const { password, ...rest } = blockedUser
+
+    return rest
 }
 
 
