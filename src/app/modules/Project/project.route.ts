@@ -7,10 +7,10 @@ import { createProjectSchema, updateProjectSchema } from "./project.validation"
 
 const router = express.Router()
 
-router.post("/", validateUser(UserRole.ADMIN), validateRequest(createProjectSchema), projectController.createProject)
+router.post("/", validateUser(UserRole.ADMIN, UserRole.MP), validateRequest(createProjectSchema), projectController.createProject)
 router.get("/", projectController.getAllProjects)
 router.get("/:id", projectController.getProjectById)
-router.patch("/:id", validateUser(UserRole.ADMIN), validateRequest(updateProjectSchema), projectController.updateProject)
-router.delete("/:id", validateUser(UserRole.ADMIN), projectController.deleteProject)
+router.patch("/:id", validateUser(UserRole.ADMIN, UserRole.MP), validateRequest(updateProjectSchema), projectController.updateProject)
+router.delete("/:id", validateUser(UserRole.ADMIN, UserRole.MP), projectController.deleteProject)
 
 export const projectRoute = router

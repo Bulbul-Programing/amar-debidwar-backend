@@ -29,7 +29,6 @@ const getAllBudgets = async (options: any) => {
         .paginate()
 
     delete budgeQueryBuilder.prismaQuery.where.isActive
-    delete budgeQueryBuilder.prismaQuery.where.isDeleted
     delete budgeQueryBuilder.prismaQuery.orderBy.createdAt
 
     const result = await prisma.budget.findMany({

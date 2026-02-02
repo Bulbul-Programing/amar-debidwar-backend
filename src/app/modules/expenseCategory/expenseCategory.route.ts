@@ -7,10 +7,10 @@ import { createExpenseCategorySchema, updateExpenseCategorySchema } from './expe
 
 const router = express.Router()
 
-router.post("/", validateUser(UserRole.ADMIN), validateRequest(createExpenseCategorySchema), expenseCategoryController.createExpenseCategory);
-router.get("/", validateUser(UserRole.ADMIN), expenseCategoryController.getAllExpenseCategories);
-router.get("/:id", validateUser(UserRole.ADMIN), expenseCategoryController.getExpenseCategoryById);
-router.patch("/:id", validateUser(UserRole.ADMIN), validateRequest(updateExpenseCategorySchema), expenseCategoryController.updateExpenseCategory);
-router.delete("/:id", validateUser(UserRole.ADMIN), expenseCategoryController.blockExpenseCategory);
+router.post("/", validateUser(UserRole.ADMIN, UserRole.MP), validateRequest(createExpenseCategorySchema), expenseCategoryController.createExpenseCategory);
+router.get("/", validateUser(UserRole.ADMIN, UserRole.MP), expenseCategoryController.getAllExpenseCategories);
+router.get("/:id", validateUser(UserRole.ADMIN, UserRole.MP), expenseCategoryController.getExpenseCategoryById);
+router.patch("/:id", validateUser(UserRole.ADMIN, UserRole.MP), validateRequest(updateExpenseCategorySchema), expenseCategoryController.updateExpenseCategory);
+router.delete("/:id", validateUser(UserRole.ADMIN, UserRole.MP), expenseCategoryController.blockExpenseCategory);
 
 export const expenseCategoryRoutes = router

@@ -34,7 +34,7 @@ const moduleRoutes: TModuleRoutes[] = [
         route: fundSourceRoutes
     },
     {
-        path: "/budge",
+        path: "/budget",
         route: BudgetRoutes
     },
     {

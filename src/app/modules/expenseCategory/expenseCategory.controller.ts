@@ -62,8 +62,8 @@ const blockExpenseCategory = catchAsync(async (req: Request, res: Response) => {
     sendResponse(res, {
         statusCode: 200,
         success: true,
-        message: "Expense category blocked status update successfully!",
-        data: result,
+        message: "Expense category delete successfully!",
+        data: null,
     });
 });
 

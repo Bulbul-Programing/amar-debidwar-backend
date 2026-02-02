@@ -18,7 +18,6 @@ const getAllExpenseCategories = async (options: any) => {
         .sort()
         .paginate()
 
-    delete expenseCategoryQueryBuilder.prismaQuery.where.isActive
     delete expenseCategoryQueryBuilder.prismaQuery.where.isDeleted
     delete expenseCategoryQueryBuilder.prismaQuery.orderBy.createdAt
 
@@ -42,12 +41,6 @@ const getAllExpenseCategories = async (options: any) => {
     }
 
     return returnData
-
-
-    return await prisma.expenseCategory.findMany({
-        include: { expenses: true },
-        orderBy: { createdAt: "desc" },
-    });
 };
 
 const getExpenseCategoryById = async (id: string) => {
