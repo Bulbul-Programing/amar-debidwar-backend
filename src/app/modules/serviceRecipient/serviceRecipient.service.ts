@@ -22,9 +22,9 @@ const createServiceRecipient = async (data: TServiceRecipient) => {
 
 const getAllServiceRecipients = async (options: any) => {
     const { page, limit, skip } = paginateCalculation(options)
-
+    
     const serviceRecipientQueryBuilder = new QueryBuilder(options)
-        .searching(["name", "phone", "nidNumber", "address", "village.name", "union.name"])
+        .searching(["name", "phone", "nidNumber", "address", "village.name", "union.name", "donation.title"])
         .sort()
         .fields()
         .paginate()
