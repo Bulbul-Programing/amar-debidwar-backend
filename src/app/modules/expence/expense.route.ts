@@ -7,9 +7,9 @@ import { expenseController } from './expense.controller';
 
 const router = express.Router()
 
-router.post("/", validateUser(UserRole.ADMIN), validateRequest(expenseValidation.createExpenseSchema), expenseController.createExpense);
+router.post("/", validateUser(UserRole.ADMIN, UserRole.MP), validateRequest(expenseValidation.createExpenseSchema), expenseController.createExpense);
 router.get("/", expenseController.getAllExpense)
 router.get("/:id", expenseController.getSingleExpense);
-router.patch("/:id", validateUser(UserRole.ADMIN), validateRequest(expenseValidation.updateExpenseSchema), expenseController.updateExpense);
+router.patch("/:id", validateUser(UserRole.ADMIN, UserRole.MP), validateRequest(expenseValidation.updateExpenseSchema), expenseController.updateExpense);
 
 export const expenseRoutes = router

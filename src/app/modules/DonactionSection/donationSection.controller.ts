@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import e, { Request, Response } from "express";
 import catchAsync from "../../utils/catchAsync";
 import { sendResponse } from "../../utils/sendResponse";
 import { donationService } from "./donationSection.service";
@@ -41,6 +41,7 @@ const getSingleDonationSection = catchAsync(async (req: Request, res: Response) 
 const updateDonationSection = catchAsync(async (req: Request, res: Response) => {
     const donationSectionId = req.params.id as string
     const updateData = req.body
+
     const result = await donationService.updateDonationSection(donationSectionId, updateData);
 
     sendResponse(res, {

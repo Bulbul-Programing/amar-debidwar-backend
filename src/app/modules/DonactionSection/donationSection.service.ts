@@ -19,7 +19,6 @@ const getAllDonationSection = async (options: any) => {
         .paginate()
 
     delete donationSectionQueryBuilder.prismaQuery.where.isActive
-    delete donationSectionQueryBuilder.prismaQuery.where.isDeleted
     delete donationSectionQueryBuilder.prismaQuery.orderBy.createdAt
 
     const result = await prisma.donationSection.findMany({
