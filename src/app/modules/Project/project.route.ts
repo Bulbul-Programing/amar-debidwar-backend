@@ -9,6 +9,7 @@ const router = express.Router()
 
 router.post("/", validateUser(UserRole.ADMIN, UserRole.MP), validateRequest(createProjectSchema), projectController.createProject)
 router.get("/", projectController.getAllProjects)
+router.get("/budget/:id", projectController.getProjectsByBudgetId)
 router.get("/:id", projectController.getProjectById)
 router.patch("/:id", validateUser(UserRole.ADMIN, UserRole.MP), validateRequest(updateProjectSchema), projectController.updateProject)
 router.delete("/:id", validateUser(UserRole.ADMIN, UserRole.MP), projectController.deleteProject)

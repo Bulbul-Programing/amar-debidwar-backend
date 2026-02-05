@@ -67,10 +67,25 @@ const deleteProject = catchAsync(async (req: Request, res: Response) => {
     });
 });
 
+const getProjectsByBudgetId = catchAsync(async (req: Request, res: Response) => {
+    const id = req.params.id as string
+    const options = req.query
+
+    const result = await projectService.getProjectsByBudgetId(id, options);
+
+    sendResponse(res, {
+        statusCode: 200,
+        success: true,
+        message: "Projects retrieve successfully!",
+        data: result,
+    });
+});
+
 export const projectController = {
     createProject,
     getAllProjects,
     getProjectById,
     updateProject,
-    deleteProject
+    deleteProject,
+    getProjectsByBudgetId
 }

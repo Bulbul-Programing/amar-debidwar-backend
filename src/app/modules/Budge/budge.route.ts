@@ -8,7 +8,8 @@ import { UserRole } from "../User/user.interface"
 const router = express.Router()
 
 router.post("/", validateUser(UserRole.MP), validateRequest(createBudgetSchema), budgetController.createBudget)
-router.get("/", validateUser(UserRole.ADMIN, UserRole.MP), budgetController.getAllBudgets)
+router.get("/", budgetController.getAllBudgets)
+router.get("/fundSource/:id", budgetController.getBudgetsByFundSource)
 router.get("/:id", validateUser(UserRole.ADMIN), budgetController.getSingleBudget)
 router.patch("/:id", validateUser(UserRole.MP), budgetController.updateBudget)
 router.delete("/:id", validateUser(UserRole.MP), budgetController.deleteBudget)

@@ -70,11 +70,24 @@ const deleteBudget = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
+const getBudgetsByFundSource = catchAsync(async (req: Request, res: Response) => {
+    const id = req.params.id as string
+    const params = req.params
+    const result = await budgetService.getBudgetsByFundSource(id, params)
+
+    sendResponse(res, {
+        statusCode: 200,
+        success: true,
+        message: "Budget retrieve successfully!",
+        data: result
+    })
+})
 
 export const budgetController = {
     createBudget,
     getAllBudgets,
     getSingleBudget,
     updateBudget,
-    deleteBudget
+    deleteBudget,
+    getBudgetsByFundSource
 }

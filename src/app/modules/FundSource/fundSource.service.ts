@@ -22,7 +22,10 @@ const getAllFundSources = async (options: any) => {
     delete fundSourceQueryBuilder.prismaQuery.orderBy.createdAt
 
     const result = await prisma.fundSource.findMany({
-        ...fundSourceQueryBuilder.prismaQuery
+        ...fundSourceQueryBuilder.prismaQuery,
+        omit: {
+            isDeleted: true
+        }
     })
 
     const total = await prisma.fundSource.count({

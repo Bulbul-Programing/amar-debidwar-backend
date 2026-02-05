@@ -122,10 +122,64 @@ const deleteProject = async (id: string) => {
     return null
 };
 
+const getProjectsByBudgetId = async (budgetId: string, options: any) => {
+    const { page, limit, skip } = paginateCalculation(options)
+    const isExistBudge = await prisma.budget.findUnique({
+        where: { id: budgetId }
+    })
+
+    if (!isExistBudge) {
+        throw new AppError(404, "Budget not found!")
+    }
+
+    const projectQueryBuilder = new QueryBuilder(options)
+        .searching(["title", "description", "location"])
+        .sort()
+        .paginate()
+
+    delete projectQueryBuilder.prismaQuery.where.isActive
+    delete projectQueryBuilder.prismaQuery.orderBy.createdAt
+
+    const { where, ...rest } = projectQueryBuilder.prismaQuery
+
+    const result = await prisma.project.findMany({
+        where: {
+            ...where,
+            budgetId: budgetId
+        },
+        ...rest,
+        include: {
+            budget: {
+                include: {
+                    fundSource: true
+                }
+            }
+        }
+    })
+
+    const total = await prisma.project.count({
+        where: projectQueryBuilder.prismaQuery.where
+    })
+
+    const returnData = {
+        meta: {
+            page: Number(page),
+            limit: Number(limit),
+            totalPage: Math.ceil(total / Number(limit)),
+            total: total,
+            skip: Number(skip)
+        },
+        data: result
+    }
+
+    return returnData
+}
+
 export const projectService = {
     createProject,
     getAllProjects,
     getProjectById,
     updateProject,
-    deleteProject
+    deleteProject,
+    getProjectsByBudgetId
 }

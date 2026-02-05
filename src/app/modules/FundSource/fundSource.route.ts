@@ -8,7 +8,7 @@ import { fundSourceController } from './fundSource.controller';
 const router = express.Router()
 
 router.post('/', validateUser(UserRole.ADMIN, UserRole.MP), validateRequest(fundSourceCreateValidation), fundSourceController.createFundSource)
-router.get('/', validateUser(UserRole.ADMIN, UserRole.MP), fundSourceController.getAllFundSources)
+router.get('/', fundSourceController.getAllFundSources)
 router.get('/:id', validateUser(UserRole.ADMIN, UserRole.MP), fundSourceController.getFundSourceById)
 router.patch('/:id', validateUser(UserRole.ADMIN, UserRole.MP), validateRequest(fundSourceUpdateValidation), fundSourceController.updateFundSource)
 router.delete('/:id', validateUser(UserRole.ADMIN, UserRole.MP), fundSourceController.deleteFundSource)

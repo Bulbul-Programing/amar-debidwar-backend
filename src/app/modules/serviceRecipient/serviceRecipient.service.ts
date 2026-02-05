@@ -22,7 +22,7 @@ const createServiceRecipient = async (data: TServiceRecipient) => {
 
 const getAllServiceRecipients = async (options: any) => {
     const { page, limit, skip } = paginateCalculation(options)
-    
+
     const serviceRecipientQueryBuilder = new QueryBuilder(options)
         .searching(["name", "phone", "nidNumber", "address", "village.name", "union.name", "donation.title"])
         .sort()
@@ -42,6 +42,17 @@ const getAllServiceRecipients = async (options: any) => {
         where: serviceRecipientQueryBuilder.prismaQuery.where
     })
 
+    const finalResult = result.reduce((mainData, serviceRecipient) => {
+        const { phone, nidNumber, ...rest } = serviceRecipient
+        const payload = {
+            ...rest,
+            phone: phone.slice(0, 7) + '****',
+            nidNumber: nidNumber.slice(0, 9) + "****"
+        }
+        mainData.push(payload)
+        return mainData
+    }, [] as typeof result)
+
     const returnData = {
         meta: {
             page: Number(page),
@@ -50,7 +61,7 @@ const getAllServiceRecipients = async (options: any) => {
             total: total,
             skip: Number(skip)
         },
-        data: result
+        data: finalResult
     }
 
     return returnData
