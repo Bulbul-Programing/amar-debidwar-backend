@@ -13,20 +13,20 @@ router.post(
     complainController.createComplain
 );
 
-router.get("/", complainController.getAllComplains);
+router.get("/", validateUser(UserRole.ADMIN, UserRole.MP), complainController.getAllComplains);
 
-router.get("/:id", complainController.getSingleComplain);
+router.get("/:id", validateUser(UserRole.ADMIN, UserRole.MP), complainController.getSingleComplain);
 
 router.patch(
     "/:id",
-    validateUser(UserRole.ADMIN),
+    validateUser(UserRole.ADMIN, UserRole.MP),
     validateRequest(updateComplainSchema),
     complainController.updateComplain
 );
 
 router.delete(
     "/:id",
-    validateUser(UserRole.ADMIN),
+    validateUser(UserRole.ADMIN, UserRole.MP),
     complainController.deleteComplain
 );
 

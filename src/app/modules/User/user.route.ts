@@ -11,7 +11,7 @@ router.post('/', validateRequest(userValidationSchema.createUserSchema), userCon
 router.post('/createAdmin', validateUser(UserRole.MP), validateRequest(userValidationSchema.createUserSchema), userController.createAdmin)
 router.get('/', validateUser(UserRole.ADMIN, UserRole.MP), userController.getAllUsers)
 router.get('/:id', validateUser(UserRole.MP, UserRole.ADMIN, UserRole.USER), userController.getSingleUser)
-router.patch('/:userId', validateUser(UserRole.MP, UserRole.ADMIN, UserRole.USER), validateRequest(userValidationSchema.updateUserSchema), userController.updateUser)
+router.patch('/update', validateUser(UserRole.MP, UserRole.ADMIN, UserRole.USER), validateRequest(userValidationSchema.updateUserSchema), userController.updateUser)
 router.delete('/:userId', validateUser(UserRole.MP), userController.deleteUser)
 router.patch('/block/:userId', validateUser(UserRole.MP), userController.blockedUser)
 
