@@ -128,7 +128,6 @@ const getBudgetsByFundSource = async (fundSourceId: string, options: any) => {
         throw new AppError(404, "Fund source not found!")
     }
 
-
     const budgeQueryBuilder = new QueryBuilder(options)
         .searching(["description", "title", "fundSource.name", "fundSource.ministry"])
         .sort()

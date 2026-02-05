@@ -5,6 +5,6 @@ export type TProject = {
   description: string;
   location: string;
   estimatedCost: number;
-  actualCost?: number | null;
+  actualCost?: number
   budgetId: string;
 };

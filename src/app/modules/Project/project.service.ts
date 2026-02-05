@@ -158,8 +158,17 @@ const getProjectsByBudgetId = async (budgetId: string, options: any) => {
     })
 
     const total = await prisma.project.count({
-        where: projectQueryBuilder.prismaQuery.where
+        where: {
+            ...where,
+            budgetId: budgetId
+        },
     })
+
+    const totalBudget = isExistBudge.budgetAmount
+    const budgeUse = result.reduce((main, project) => {
+        const budgeConium = main + (project.actualCost === null ? 0 : project.actualCost)
+        return budgeConium
+    }, 0)
 
     const returnData = {
         meta: {
@@ -167,7 +176,9 @@ const getProjectsByBudgetId = async (budgetId: string, options: any) => {
             limit: Number(limit),
             totalPage: Math.ceil(total / Number(limit)),
             total: total,
-            skip: Number(skip)
+            skip: Number(skip),
+            totalBudget: totalBudget,
+            budgeUse
         },
         data: result
     }
