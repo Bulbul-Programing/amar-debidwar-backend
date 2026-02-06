@@ -9,7 +9,7 @@ import globalErrorHandler from './app/middleware/globalErrorHandler';
 
 const app: Application = express();
 
-app.use(cors({ origin: ["https://guide-mate-frontend.vercel.app", "http://localhost:3000"] }));
+app.use(cors({ origin: ["https://amar-debidwar.vercel.app", "http://localhost:3000"] }));
 
 app.use(express.json());
 app.use(cookieParser());

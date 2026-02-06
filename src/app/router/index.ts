@@ -12,6 +12,7 @@ import { villageRoutes } from '../modules/village/village.route';
 import { unionRoutes } from '../modules/Union/union.route';
 import { complaintCategoryRoutes } from '../modules/ComplainCategory/complainCategory.routes';
 import { complainRoutes } from '../modules/Complain/complain.routes';
+import { dashboardRouter } from '../modules/Dashboard/router';
 
 type TModuleRoutes = {
     path: string,
@@ -72,6 +73,10 @@ const moduleRoutes: TModuleRoutes[] = [
     {
         path: "/complain",
         route: complainRoutes
+    },
+    {
+        path: "/dashboard",
+        route: dashboardRouter
     },
 ]
 

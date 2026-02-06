@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post(
     "/",
-    validateUser(UserRole.ADMIN),
+    validateUser(UserRole.ADMIN, UserRole.MP),
     validateRequest(createUnionSchema),
     UnionController.createUnion
 );
